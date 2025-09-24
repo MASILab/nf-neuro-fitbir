@@ -13,6 +13,7 @@
         "trust": "git config --global --add safe.directory /workspaces"
     },
     "mounts": [
+        "source=/fs5/p_masi/fitbir,target=/fs5/p_masi/fitbir,type=bind",
         {
             "target": "/tmp",
             "type": "volume"

@@ -46,27 +46,25 @@ ENV NFCORE_SUBWORKFLOWS_GIT_REMOTE=https://github.com/scilus/nf-neuro.git
 ENV NFCORE_SUBWORKFLOWS_BRANCH=main
 
 # Install conda
-ENV PATH="/root/miniconda3/bin:${PATH}"
+ENV PATH="/root/miniforge3/bin:${PATH}"
 RUN arch=$(uname -m) && \
     if [ "$arch" = "x86_64" ]; then \
-    MINICONDA_URL="https://repo.anaconda.com/miniconda/Miniconda3-py312_25.3.1-1-Linux-x86_64.sh"; \
+    MINIFORGE_URL="https://github.com/conda-forge/miniforge/releases/download/25.3.0-3/Miniforge3-25.3.0-3-Linux-x86_64.sh"; \
     elif [ "$arch" = "aarch64" ]; then \
-    MINICONDA_URL="https://repo.anaconda.com/miniconda/Miniconda3-py312_25.3.1-1-Linux-aarch64.sh"; \
+    MINIFORGE_URL="https://github.com/conda-forge/miniforge/releases/download/25.3.0-3/Miniforge3-25.3.0-3-Linux-aarch64.sh"; \
     else \
     echo "Unsupported architecture: $arch"; \
     exit 1; \
     fi && \
-    wget $MINICONDA_URL -O miniconda.sh && \
+    wget $MINIFORGE_URL -O miniforge.sh && \
     mkdir -p /root/.conda && \
-    bash miniconda.sh -b -p /root/miniconda3 && \
-    rm -f miniconda.sh
+    bash miniforge.sh -b -p /root/miniforge3 && \
+    rm -f miniforge.sh
 
 # Install nextflow, nf-core, Mamba, and pytest-workflow
-RUN conda install --name=base conda-anaconda-tos && \
-    conda config --add channels bioconda && \
+RUN conda config --add channels bioconda && \
     conda config --add channels conda-forge && \
     conda config --set channel_priority strict && \
-    conda tos accept && \
     conda update --quiet --yes --all && \
     conda install --quiet --yes --name base \
         mamba \
