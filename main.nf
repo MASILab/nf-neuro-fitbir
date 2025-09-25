@@ -9,7 +9,7 @@ include { BETCROP_SYNTHBET } from './modules/nf-neuro/betcrop/synthbet/main'
 include { RECONST_FREEWATER } from './modules/nf-neuro/reconst/freewater/main'
 include { RECONST_DTIMETRICS } from './modules/nf-neuro/reconst/dtimetrics/main'
 include { SEGMENTATION_SYNTHSEG } from './modules/nf-neuro/segmentation/synthseg/main'
-include { REGISTRATION_ANATTODWI } from './modules/nf-neuro/registration/anattodwi/main'
+include { REGISTRATION_ANTS } from './modules/nf-neuro/registration/ants/main'
 include { 
     REGISTRATION_ANTSAPPLYTRANSFORMS as REGISTRATION_ANTSAPPLYTRANSFORMS_mask; 
     REGISTRATION_ANTSAPPLYTRANSFORMS as REGISTRATION_ANTSAPPLYTRANSFORMS_wm 
@@ -92,25 +92,25 @@ workflow {
     b0_image = UTILS_EXTRACTB0.out.b0
 
     // Register T1w --> dwi
-    anattodwi_input = t1_preproc
-        .join(b0_image)
+    t1_to_dwi_input = b0_image
+        .join(t1_preproc)
         .map { it + [[]] }
-    REGISTRATION_ANATTODWI(anattodwi_input)
-    anattodwi_affine = REGISTRATION_ANATTODWI.out.affine
-    anattodwi_warp = REGISTRATION_ANATTODWI.out.warp
+    REGISTRATION_ANTS(t1_to_dwi_input)
+    t1_to_dwi_affine = REGISTRATION_ANTS.out.affine
+    t1_to_dwi_warp = REGISTRATION_ANTS.out.warp
 
     // Apply transform to mask and synthseg
     antsapplytransforms_input_mask = t1_mask
         .join(b0_image)
-        .join(anattodwi_warp)
-        .join(anattodwi_affine)
+        .join(t1_to_dwi_warp)
+        .join(t1_to_dwi_affine)
     REGISTRATION_ANTSAPPLYTRANSFORMS_mask(antsapplytransforms_input_mask)
     dwi_mask = REGISTRATION_ANTSAPPLYTRANSFORMS_mask.out.warped_image
 
     antsapplytransforms_input_wm = SEGMENTATION_SYNTHSEG.out.wm_mask
         .join(b0_image)
-        .join(anattodwi_warp)
-        .join(anattodwi_affine)
+        .join(t1_to_dwi_warp)
+        .join(t1_to_dwi_affine)
     REGISTRATION_ANTSAPPLYTRANSFORMS_wm(antsapplytransforms_input_wm)
     wm_mask = REGISTRATION_ANTSAPPLYTRANSFORMS_wm.out.warped_image
 
@@ -123,6 +123,6 @@ workflow {
     // Get FW-corrected DTI metrics
     dtimetrics_input = RECONST_FREEWATER.out.dwi_fw_corrected
         .join(bids_dwi.bval_bvec)
-        .map { it + [[]] }
+        .join(dwi_mask)
     RECONST_DTIMETRICS(dtimetrics_input)
 }

@@ -55,6 +55,11 @@
             "git_sha": "a51881f1c316e0e52b68fa66d7465c32339e2142",
             "installed_by": ["modules"]
           },
+          "registration/ants": {
+            "branch": "main",
+            "git_sha": "a51881f1c316e0e52b68fa66d7465c32339e2142",
+            "installed_by": ["modules"]
+          },
           "registration/antsapplytransforms": {
             "branch": "main",
             "git_sha": "bd5f1aece0ad185cad52911346aa62c225dfff4d",

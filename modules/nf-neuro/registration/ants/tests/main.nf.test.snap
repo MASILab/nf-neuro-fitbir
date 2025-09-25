@@ -1,0 +1,323 @@
+{
+    "registration - ants": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test__warped.nii.gz:md5,6491f46d2c2cae09338effb989ec3bf7"
+                    ]
+                ],
+                "1": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test__output0GenericAffine.mat:md5,3b6d0eaddd216d15bf50a116c2f09065"
+                    ]
+                ],
+                "2": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test__output1InverseAffine.mat:md5,14b90a8217065e42b21102de73a489c1"
+                    ]
+                ],
+                "3": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test__output1Warp.nii.gz:md5,db8e148adf0e32d551cf5e75ca3e76ab"
+                    ]
+                ],
+                "4": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test__output0InverseWarp.nii.gz:md5,3069b784eaa199078d21ecbd5366e27b"
+                    ]
+                ],
+                "5": [
+
+                ],
+                "6": [
+                    "versions.yml:md5,b79ebe5518288b629eb72580d6e6b785"
+                ],
+                "affine": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test__output0GenericAffine.mat:md5,3b6d0eaddd216d15bf50a116c2f09065"
+                    ]
+                ],
+                "image": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test__warped.nii.gz:md5,6491f46d2c2cae09338effb989ec3bf7"
+                    ]
+                ],
+                "inverse_affine": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test__output1InverseAffine.mat:md5,14b90a8217065e42b21102de73a489c1"
+                    ]
+                ],
+                "inverse_warp": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test__output0InverseWarp.nii.gz:md5,3069b784eaa199078d21ecbd5366e27b"
+                    ]
+                ],
+                "mqc": [
+
+                ],
+                "versions": [
+                    "versions.yml:md5,b79ebe5518288b629eb72580d6e6b785"
+                ],
+                "warp": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test__output1Warp.nii.gz:md5,db8e148adf0e32d551cf5e75ca3e76ab"
+                    ]
+                ]
+            }
+        ],
+        "meta": {
+            "nf-test": "0.9.0",
+            "nextflow": "25.04.7"
+        },
+        "timestamp": "2025-09-22T21:59:53.198912314"
+    },
+    "registration - ants - quick": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test__warped.nii.gz:md5,45822afae6c0dc33551b690f6f10dbe4"
+                    ]
+                ],
+                "1": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test__output0GenericAffine.mat:md5,17e711c6a2f73415269b4272344890bc"
+                    ]
+                ],
+                "2": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test__output1InverseAffine.mat:md5,e5df1f989e0340746d9742ff2d0a7a99"
+                    ]
+                ],
+                "3": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test__output1Warp.nii.gz:md5,813a4218d33d5acfebadc4ba0e49df8b"
+                    ]
+                ],
+                "4": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test__output0InverseWarp.nii.gz:md5,813a4218d33d5acfebadc4ba0e49df8b"
+                    ]
+                ],
+                "5": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test_T1_to_DWI_registration_ants_mqc.gif:md5,9cdd7e9bf7facc3f95a61de03e15d47d"
+                    ]
+                ],
+                "6": [
+                    "versions.yml:md5,b79ebe5518288b629eb72580d6e6b785"
+                ],
+                "affine": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test__output0GenericAffine.mat:md5,17e711c6a2f73415269b4272344890bc"
+                    ]
+                ],
+                "image": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test__warped.nii.gz:md5,45822afae6c0dc33551b690f6f10dbe4"
+                    ]
+                ],
+                "inverse_affine": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test__output1InverseAffine.mat:md5,e5df1f989e0340746d9742ff2d0a7a99"
+                    ]
+                ],
+                "inverse_warp": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test__output0InverseWarp.nii.gz:md5,813a4218d33d5acfebadc4ba0e49df8b"
+                    ]
+                ],
+                "mqc": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test_T1_to_DWI_registration_ants_mqc.gif:md5,9cdd7e9bf7facc3f95a61de03e15d47d"
+                    ]
+                ],
+                "versions": [
+                    "versions.yml:md5,b79ebe5518288b629eb72580d6e6b785"
+                ],
+                "warp": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test__output1Warp.nii.gz:md5,813a4218d33d5acfebadc4ba0e49df8b"
+                    ]
+                ]
+            }
+        ],
+        "meta": {
+            "nf-test": "0.9.0",
+            "nextflow": "25.04.7"
+        },
+        "timestamp": "2025-09-22T22:00:25.806953541"
+    },
+    "registration - ants - options": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test__warped.nii.gz:md5,c090343bdf2af2eac20a051b3cf9bb20"
+                    ]
+                ],
+                "1": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test__output0GenericAffine.mat:md5,d3230976041b8532b14a00e2e5760395"
+                    ]
+                ],
+                "2": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test__output1InverseAffine.mat:md5,10a6c2eededdc85709bbff395f0aab3a"
+                    ]
+                ],
+                "3": [
+
+                ],
+                "4": [
+
+                ],
+                "5": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test__registration_ants_mqc.gif:md5,1bfa145273f0ece8a2293efc7d2a8c2e"
+                    ]
+                ],
+                "6": [
+                    "versions.yml:md5,b79ebe5518288b629eb72580d6e6b785"
+                ],
+                "affine": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test__output0GenericAffine.mat:md5,d3230976041b8532b14a00e2e5760395"
+                    ]
+                ],
+                "image": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test__warped.nii.gz:md5,c090343bdf2af2eac20a051b3cf9bb20"
+                    ]
+                ],
+                "inverse_affine": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test__output1InverseAffine.mat:md5,10a6c2eededdc85709bbff395f0aab3a"
+                    ]
+                ],
+                "inverse_warp": [
+
+                ],
+                "mqc": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test__registration_ants_mqc.gif:md5,1bfa145273f0ece8a2293efc7d2a8c2e"
+                    ]
+                ],
+                "versions": [
+                    "versions.yml:md5,b79ebe5518288b629eb72580d6e6b785"
+                ],
+                "warp": [
+
+                ]
+            }
+        ],
+        "meta": {
+            "nf-test": "0.9.0",
+            "nextflow": "25.04.7"
+        },
+        "timestamp": "2025-09-22T22:00:54.46748032"
+    },
+    "registration - ants - stub": {
+        "content": [
+            [
+                "versions.yml:md5,b79ebe5518288b629eb72580d6e6b785"
+            ]
+        ],
+        "meta": {
+            "nf-test": "0.9.0",
+            "nextflow": "25.04.7"
+        },
+        "timestamp": "2025-09-22T22:01:09.70219899"
+    }
+}
