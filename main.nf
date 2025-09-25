@@ -1,10 +1,19 @@
 #!/usr/bin/env nextflow
 
 include { IO_BIDS } from './subworkflows/nf-neuro/io_bids/main'
+include { PREPROC_T1 } from './subworkflows/nf-neuro/preproc_t1/main'
+
 include { IMAGE_RESAMPLE } from './modules/nf-neuro/image/resample/main'
 include { UTILS_EXTRACTB0 } from './modules/nf-neuro/utils/extractb0/main'
 include { BETCROP_SYNTHBET } from './modules/nf-neuro/betcrop/synthbet/main'
 include { RECONST_FREEWATER } from './modules/nf-neuro/reconst/freewater/main'
+include { RECONST_DTIMETRICS } from './modules/nf-neuro/reconst/dtimetrics/main'
+include { SEGMENTATION_SYNTHSEG } from './modules/nf-neuro/segmentation/synthseg/main'
+include { REGISTRATION_ANATTODWI } from './modules/nf-neuro/registration/anattodwi/main'
+include { 
+    REGISTRATION_ANTSAPPLYTRANSFORMS as REGISTRATION_ANTSAPPLYTRANSFORMS_mask; 
+    REGISTRATION_ANTSAPPLYTRANSFORMS as REGISTRATION_ANTSAPPLYTRANSFORMS_wm 
+} from './modules/nf-neuro/registration/antsapplytransforms/main'
 
 workflow {
     
@@ -28,15 +37,14 @@ workflow {
         error "Please resubmit your command with the previous file structure."
     }    
         
-    // ** Create channels for IO_BIDS subworkflow ** //
-    // Pass the path directly without file() to avoid staging
+    // Create channels for IO_BIDS subworkflow
     bids_folder_ch = Channel.of(params.input)
     fs_folder_ch = Channel.empty()
     bidsignore_ch = Channel.empty()
     
-    // ** Call IO_BIDS subworkflow ** //
+    // Call IO_BIDS subworkflow
     IO_BIDS(bids_folder_ch, fs_folder_ch, bidsignore_ch)
-    bids_output = IO_BIDS.out.ch_dwi_bval_bvec
+    bids_dwi = IO_BIDS.out.ch_dwi_bval_bvec
         .multiMap { meta, dwi, bval, bvec -> 
             def new_meta = meta.clone()
             new_meta.id = "${meta.id}${meta.session ?: ''}"
@@ -44,30 +52,77 @@ workflow {
             dwi_bval_bvec: [ new_meta, dwi, bval, bvec ]
             bval_bvec: [ new_meta, bval, bvec ]
         }
-    
-    // ** Resample to 1x1x1 ** //
-    resample_input = bids_output.dwi
+    bids_t1w = IO_BIDS.out.ch_t1
+        .map { meta, t1w -> 
+            def new_meta = meta.clone()
+            new_meta.id = "${meta.id}${meta.session ?: ''}"
+            t1w: [ new_meta, t1w ]
+        }
+
+    // ** T1w PROCESSING ** //
+    PREPROC_T1(
+        bids_t1w,
+        Channel.empty(),
+        Channel.empty(),
+        Channel.empty(),
+        Channel.empty(),
+        Channel.empty(),
+        Channel.empty(),
+        Channel.empty(),
+    )
+    t1_preproc = PREPROC_T1.out.t1_final
+    t1_mask = PREPROC_T1.out.mask_final
+
+    // Run synthseg on T1w
+    synthseg_input = t1_preproc
+        .map { it + [[], file(params.freesurfer_license)] }
+    SEGMENTATION_SYNTHSEG(synthseg_input)
+
+    // ** DWI PREPROCESSING ** //
+    // Resample to 1x1x1
+    resample_input = bids_dwi.dwi
         .map { it + [[]] }
     IMAGE_RESAMPLE(resample_input)
 
     resampled_dwi_bval_bvec = IMAGE_RESAMPLE.out.image
-        .join(bids_output.bval_bvec)
+        .join(bids_dwi.bval_bvec)
 
-    // ** Extract b0 images ** //
+    // Extract b0 images
     UTILS_EXTRACTB0(resampled_dwi_bval_bvec)
     b0_image = UTILS_EXTRACTB0.out.b0
-    synthstrip_input = b0_image
+
+    // Register T1w --> dwi
+    anattodwi_input = t1_preproc
+        .join(b0_image)
         .map { it + [[]] }
+    REGISTRATION_ANATTODWI(anattodwi_input)
+    anattodwi_affine = REGISTRATION_ANATTODWI.out.affine
+    anattodwi_warp = REGISTRATION_ANATTODWI.out.warp
 
-    // ** Run synthstrip ** //
-    BETCROP_SYNTHBET(synthstrip_input)
+    // Apply transform to mask and synthseg
+    antsapplytransforms_input_mask = t1_mask
+        .join(b0_image)
+        .join(anattodwi_warp)
+        .join(anattodwi_affine)
+    REGISTRATION_ANTSAPPLYTRANSFORMS_mask(antsapplytransforms_input_mask)
+    dwi_mask = REGISTRATION_ANTSAPPLYTRANSFORMS_mask.out.warped_image
 
-    // ** Run FW correction ** //
+    antsapplytransforms_input_wm = SEGMENTATION_SYNTHSEG.out.wm_mask
+        .join(b0_image)
+        .join(anattodwi_warp)
+        .join(anattodwi_affine)
+    REGISTRATION_ANTSAPPLYTRANSFORMS_wm(antsapplytransforms_input_wm)
+    wm_mask = REGISTRATION_ANTSAPPLYTRANSFORMS_wm.out.warped_image
+
+    // Run FW correction
     fw_input = resampled_dwi_bval_bvec
-        .join(BETCROP_SYNTHBET.out.brain_mask)
-        .map { meta_dwi_bval_bvec, brain_mask -> 
-            def (meta, dwi, bval, bvec) = meta_dwi_bval_bvec
-            [ meta, dwi, bval, bvec, brain_mask, [] ]
-        }
+        .join(dwi_mask)
+        .map { it + [[]] }
     RECONST_FREEWATER(fw_input)
+
+    // Get FW-corrected DTI metrics
+    dtimetrics_input = RECONST_FREEWATER.out.dwi_fw_corrected
+        .join(bids_dwi.bval_bvec)
+        .map { it + [[]] }
+    RECONST_DTIMETRICS(dtimetrics_input)
 }

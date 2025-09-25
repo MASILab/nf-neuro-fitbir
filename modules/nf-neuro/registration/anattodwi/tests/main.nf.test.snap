@@ -1,0 +1,121 @@
+{
+    "registration - anattodwi": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test__output0GenericAffine.mat:md5,18d03f6c1fd587b00b3bc9363eb8ed4f"
+                    ]
+                ],
+                "1": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test__output1Warp.nii.gz:md5,aa42d4dd6f227d986cd99df45425d5c5"
+                    ]
+                ],
+                "2": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test__output1InverseWarp.nii.gz:md5,6a04d7c100075b4ba7a276a55a4094bd"
+                    ]
+                ],
+                "3": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test__t1_warped.nii.gz:md5,39c30c6251cba224989bc74a31540121"
+                    ]
+                ],
+                "4": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test_registration_anattodwi_mqc.gif:md5,687252d31b0109f99a174b4e3960e4e6"
+                    ]
+                ],
+                "5": [
+                    "versions.yml:md5,77dc5dd2d9f2f2b772043eef8471eb13"
+                ],
+                "affine": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test__output0GenericAffine.mat:md5,18d03f6c1fd587b00b3bc9363eb8ed4f"
+                    ]
+                ],
+                "inverse_warp": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test__output1InverseWarp.nii.gz:md5,6a04d7c100075b4ba7a276a55a4094bd"
+                    ]
+                ],
+                "mqc": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test_registration_anattodwi_mqc.gif:md5,687252d31b0109f99a174b4e3960e4e6"
+                    ]
+                ],
+                "t1_warped": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test__t1_warped.nii.gz:md5,39c30c6251cba224989bc74a31540121"
+                    ]
+                ],
+                "versions": [
+                    "versions.yml:md5,77dc5dd2d9f2f2b772043eef8471eb13"
+                ],
+                "warp": [
+                    [
+                        {
+                            "id": "test",
+                            "single_end": false
+                        },
+                        "test__output1Warp.nii.gz:md5,aa42d4dd6f227d986cd99df45425d5c5"
+                    ]
+                ]
+            }
+        ],
+        "meta": {
+            "nf-test": "0.9.0",
+            "nextflow": "25.04.7"
+        },
+        "timestamp": "2025-09-22T21:23:44.360834413"
+    },
+    "registration - anattodwi -stub-run": {
+        "content": [
+            [
+                "versions.yml:md5,77dc5dd2d9f2f2b772043eef8471eb13"
+            ]
+        ],
+        "meta": {
+            "nf-test": "0.9.0",
+            "nextflow": "25.04.7"
+        },
+        "timestamp": "2025-09-22T21:24:00.939016823"
+    }
+}

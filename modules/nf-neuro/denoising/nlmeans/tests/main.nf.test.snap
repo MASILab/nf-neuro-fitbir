@@ -1,0 +1,53 @@
+{
+    "denoising - nlmeans": {
+        "content": [
+            {
+                "0": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test__denoised.nii.gz:md5,4443314c19646ac7ae866ff1947cb665"
+                    ]
+                ],
+                "1": [
+                    
+                ],
+                "2": [
+                    "versions.yml:md5,ceabc00e745975c884a5ab0b435c93db"
+                ],
+                "image": [
+                    [
+                        {
+                            "id": "test"
+                        },
+                        "test__denoised.nii.gz:md5,4443314c19646ac7ae866ff1947cb665"
+                    ]
+                ],
+                "piesno_mask": [
+                    
+                ],
+                "versions": [
+                    "versions.yml:md5,ceabc00e745975c884a5ab0b435c93db"
+                ]
+            }
+        ],
+        "meta": {
+            "nf-test": "0.9.0",
+            "nextflow": "25.04.7"
+        },
+        "timestamp": "2025-09-24T18:48:04.703922151"
+    },
+    "denoising - nlmeans - stub-run": {
+        "content": [
+            [
+                "versions.yml:md5,ceabc00e745975c884a5ab0b435c93db"
+            ]
+        ],
+        "meta": {
+            "nf-test": "0.9.0",
+            "nextflow": "25.04.7"
+        },
+        "timestamp": "2025-09-24T18:52:31.125489656"
+    }
+}
