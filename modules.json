@@ -1,41 +1,72 @@
 {
-  "name": "",
-  "homePage": "",
-  "repos": {
-    "https://github.com/scilus/nf-neuro.git": {
-      "modules": {
-        "nf-neuro": {
-          "image/resample": {
-            "branch": "main",
-            "git_sha": "a3fbaa40d649f221b099322105936afe09115c0c",
-            "installed_by": ["modules"]
-          },
-          "io/readbids": {
-            "branch": "main",
-            "git_sha": "53e633db3898cb2265053c02bcac47fd3d2fda7b",
-            "installed_by": ["io_bids"]
-          },
-          "reconst/dtimetrics": {
-            "branch": "main",
-            "git_sha": "452075a707a9769b0509fc33a1051e8ba80799bf",
-            "installed_by": ["modules"]
-          }
+    "name": "",
+    "homePage": "",
+    "repos": {
+        "https://github.com/scilus/nf-neuro.git": {
+            "modules": {
+                "nf-neuro": {
+                    "betcrop/synthbet": {
+                        "branch": "main",
+                        "git_sha": "60e21b273653eec3b710b91562e714c74ef4d0c7",
+                        "installed_by": [
+                            "modules"
+                        ]
+                    },
+                    "image/resample": {
+                        "branch": "main",
+                        "git_sha": "a3fbaa40d649f221b099322105936afe09115c0c",
+                        "installed_by": [
+                            "modules"
+                        ]
+                    },
+                    "io/readbids": {
+                        "branch": "main",
+                        "git_sha": "53e633db3898cb2265053c02bcac47fd3d2fda7b",
+                        "installed_by": [
+                            "io_bids"
+                        ]
+                    },
+                    "reconst/dtimetrics": {
+                        "branch": "main",
+                        "git_sha": "452075a707a9769b0509fc33a1051e8ba80799bf",
+                        "installed_by": [
+                            "modules"
+                        ]
+                    },
+                    "reconst/freewater": {
+                        "branch": "main",
+                        "git_sha": "2dfca810725af917cb981206040aa3211fb18dc4",
+                        "installed_by": [
+                            "modules"
+                        ]
+                    },
+                    "utils/extractb0": {
+                        "branch": "main",
+                        "git_sha": "0245a01f7ab9bec0753e2235fba489e3353f1a33",
+                        "installed_by": [
+                            "modules"
+                        ]
+                    }
+                }
+            },
+            "subworkflows": {
+                "nf-neuro": {
+                    "io_bids": {
+                        "branch": "main",
+                        "git_sha": "9cdfcfcec58de632de847f403c2a3c1a53d40bde",
+                        "installed_by": [
+                            "subworkflows"
+                        ]
+                    },
+                    "load_test_data": {
+                        "branch": "main",
+                        "git_sha": "a79cb5c9645269db389c563f674b17c5e900a50b",
+                        "installed_by": [
+                            "subworkflows"
+                        ]
+                    }
+                }
+            }
         }
-      },
-      "subworkflows": {
-        "nf-neuro": {
-          "io_bids": {
-            "branch": "main",
-            "git_sha": "9cdfcfcec58de632de847f403c2a3c1a53d40bde",
-            "installed_by": ["subworkflows"]
-          },
-          "load_test_data": {
-            "branch": "main",
-            "git_sha": "a79cb5c9645269db389c563f674b17c5e900a50b",
-            "installed_by": ["subworkflows"]
-          }
-        }
-      }
     }
-  }
 }
