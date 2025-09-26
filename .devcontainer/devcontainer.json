@@ -18,7 +18,7 @@
     "mounts": [
         "source=/fs5/p_masi/fitbir,target=/fs5/p_masi/fitbir,type=bind",
         "source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind",
-        "source=/home/local/VANDERBILT/saundam1/freesurfer_license_new.txt,target=/root/freesurfer_license.txt,type=bind",
+        "source=/home/local/VANDERBILT/saundam1/freesurfer_license.txt,target=/home/local/VANDERBILT/saundam1/freesurfer_license.txt,type=bind",
         {
             "target": "/tmp",
             "type": "volume"

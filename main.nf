@@ -8,12 +8,14 @@ include { UTILS_EXTRACTB0 } from './modules/nf-neuro/utils/extractb0/main'
 include { BETCROP_SYNTHBET } from './modules/nf-neuro/betcrop/synthbet/main'
 include { RECONST_FREEWATER } from './modules/nf-neuro/reconst/freewater/main'
 include { RECONST_DTIMETRICS } from './modules/nf-neuro/reconst/dtimetrics/main'
+include { RECONST_FODF } from './modules/nf-neuro/reconst/fodf/main'
 include { SEGMENTATION_SYNTHSEG } from './modules/nf-neuro/segmentation/synthseg/main'
 include { REGISTRATION_ANTS } from './modules/nf-neuro/registration/ants/main'
 include { 
     REGISTRATION_ANTSAPPLYTRANSFORMS as REGISTRATION_ANTSAPPLYTRANSFORMS_mask; 
     REGISTRATION_ANTSAPPLYTRANSFORMS as REGISTRATION_ANTSAPPLYTRANSFORMS_wm 
 } from './modules/nf-neuro/registration/antsapplytransforms/main'
+include { RECONST_FRF } from './modules/nf-neuro/reconst/frf/main'
 
 workflow {
     
@@ -91,6 +93,12 @@ workflow {
     UTILS_EXTRACTB0(resampled_dwi_bval_bvec)
     b0_image = UTILS_EXTRACTB0.out.b0
 
+    // Create b0 mask
+    betcrop_input = b0_image
+        .map { it + [[]] }
+    BETCROP_SYNTHBET(betcrop_input)
+    b0_mask = BETCROP_SYNTHBET.out.brain_mask
+
     // Register T1w --> dwi
     t1_to_dwi_input = b0_image
         .join(t1_preproc)
@@ -105,7 +113,7 @@ workflow {
         .join(t1_to_dwi_warp)
         .join(t1_to_dwi_affine)
     REGISTRATION_ANTSAPPLYTRANSFORMS_mask(antsapplytransforms_input_mask)
-    dwi_mask = REGISTRATION_ANTSAPPLYTRANSFORMS_mask.out.warped_image
+    t1_to_dwi_mask = REGISTRATION_ANTSAPPLYTRANSFORMS_mask.out.warped_image
 
     antsapplytransforms_input_wm = SEGMENTATION_SYNTHSEG.out.wm_mask
         .join(b0_image)
@@ -116,13 +124,35 @@ workflow {
 
     // Run FW correction
     fw_input = resampled_dwi_bval_bvec
-        .join(dwi_mask)
+        .join(b0_mask)
         .map { it + [[]] }
     RECONST_FREEWATER(fw_input)
 
     // Get FW-corrected DTI metrics
     dtimetrics_input = RECONST_FREEWATER.out.dwi_fw_corrected
         .join(bids_dwi.bval_bvec)
-        .join(dwi_mask)
+        .join(b0_mask)
     RECONST_DTIMETRICS(dtimetrics_input)
+    fa = RECONST_DTIMETRICS.out.fa
+    md = RECONST_DTIMETRICS.out.md
+
+    // Calculate FRF
+    frf_input = RECONST_FREEWATER.out.dwi_fw_corrected
+        .join(bids_dwi.bval_bvec)
+        .join(b0_mask)
+        .join(wm_mask)
+        .map { it + [[], []] }
+    RECONST_FRF(frf_input)
+    ss_frf = RECONST_FRF.out.frf
+
+    // Reconstruct FODs
+    fodf_input = RECONST_FREEWATER.out.dwi_fw_corrected
+        .join(bids_dwi.bval_bvec)
+        .join(b0_mask)
+        .join(fa)
+        .join(md)
+        .join(ss_frf)
+        .map { it + [[], []] }
+    RECONST_FODF(fodf_input)
+
 }
