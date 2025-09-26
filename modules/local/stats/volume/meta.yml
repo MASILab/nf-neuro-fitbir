@@ -1,0 +1,53 @@
+name: "stats_volume"
+description: Module to compute volume of ROIs.
+keywords:
+  - nifti
+  - volume
+  - scilpy
+  - stats
+  - rois
+tools:
+  - FSL:
+      description: FSL Toolbox
+      homepage: https://fsl.fmrib.ox.ac.uk/fsl/fslwiki
+      doi: 10.1016/j.neuroimage.2011.09.015
+      identifier: ""
+input:
+  - - meta:
+        type: map
+        description: |
+          Groovy Map containing sample information
+          e.g. `[ id:'test', single_end:false ]`
+    - rois:
+        type: file
+        description: ROIs in NIfTI format.
+        pattern: "*.{nii,nii.gz}"
+        ontologies:
+          - edam: http://edamontology.org/format_4001 # NIFTI format
+args:
+  - suffix:
+      type: string
+      description: It will add an extra string before "_volumes.json"
+      default: ""
+output:
+  mqc:
+    - - meta:
+          type: map
+          description: |
+            Groovy Map containing sample information
+            e.g. `[ id:'test', single_end:false ]`
+      - "*_volumes.json":
+          type: file
+          description: JSON file containing volumes of each file in cubic centimeters.
+          pattern: "*_volumes.json"
+          ontologies:
+            - edam: http://edamontology.org/format_3464 # JSON
+  versions:
+    - versions.yml:
+        type: file
+        description: File containing software versions
+        pattern: "versions.yml"
+        ontologies:
+          - edam: http://edamontology.org/format_3750 # YAML
+authors:
+  - "@saundersresearch"

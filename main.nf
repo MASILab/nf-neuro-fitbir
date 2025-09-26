@@ -16,6 +16,10 @@ include {
     REGISTRATION_ANTSAPPLYTRANSFORMS as REGISTRATION_ANTSAPPLYTRANSFORMS_wm 
 } from './modules/nf-neuro/registration/antsapplytransforms/main'
 include { RECONST_FRF } from './modules/nf-neuro/reconst/frf/main'
+include { STATS_METRICSINROI } from './modules/nf-neuro/stats/metricsinroi/main'
+
+include { ML_BUNDLEPARC } from './modules/local/ml/bundleparc/main'
+include { STATS_VOLUME } from './modules/local/stats/volume/main'
 
 workflow {
     
@@ -155,4 +159,19 @@ workflow {
         .map { it + [[], []] }
     RECONST_FODF(fodf_input)
 
+    // Perform BundleParc
+    ml_bundleparc_input = RECONST_FODF.out.fodf
+    ML_BUNDLEPARC(ml_bundleparc_input)
+
+    // Now get mean/std of FA and MD in the BundleParc ROIs
+    bundles = ML_BUNDLEPARC.out.bundles
+    metrics_input = fa.join(md)
+        .map { meta, fa_file, md_file -> tuple(meta, [fa_file, md_file]) }
+        .join(bundles)
+        .map { it + [[]] }
+
+    STATS_METRICSINROI(metrics_input)
+
+    // Calculate volume of each BundleParc ROI
+    STATS_VOLUME(bundles)
 }
