@@ -1,7 +1,7 @@
 
 process REGISTRATION_ANTS {
     tag "$meta.id"
-    label 'process_medium'
+    label 'process_high'
 
     container "scilus/scilus:2.2.0"
 

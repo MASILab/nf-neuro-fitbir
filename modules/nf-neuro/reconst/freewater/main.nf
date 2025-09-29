@@ -1,7 +1,7 @@
 
 process RECONST_FREEWATER {
     tag "$meta.id"
-    label 'process_single'
+    label 'process_low'
 
     container "scilus/scilpy:2.2.0_cpu"
 

@@ -2,7 +2,7 @@
 
 process RECONST_FRF {
     tag "$meta.id"
-    label 'process_single'
+    label 'process_low'
 
     container "scilus/scilpy:2.2.0_cpu"
 

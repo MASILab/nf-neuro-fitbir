@@ -1,6 +1,6 @@
 {
     "name": "nextflow-training",
-    "build": { "dockerfile": "Dockerfile", "context": ".." },
+    "build": { "dockerfile": "Dockerfile", "context": "../.." },
     "runArgs": [
         "--gpus=all"
     ],

@@ -1,6 +1,6 @@
 process BETCROP_SYNTHBET {
     tag "$meta.id"
-    label 'process_single'
+    label 'process_low'
 
     container "freesurfer/freesurfer:7.4.1"
 

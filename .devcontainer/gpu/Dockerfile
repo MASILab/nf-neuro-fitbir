@@ -92,4 +92,4 @@ RUN SNIPPET="export PROMPT_COMMAND='history -a' && export HISTFILE=/commandhisto
     && echo "$SNIPPET" >> "/root/.bashrc"
 
 # Add tos disclaimer to bashrc as trap so it runs at the end of the sourcing process
-ADD .devcontainer/bash_profile.sh /root/.bash_profile
+ADD .devcontainer/gpu/bash_profile.sh /root/.bash_profile
