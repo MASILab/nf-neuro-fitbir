@@ -79,9 +79,22 @@ workflow {
     t1_preproc = PREPROC_T1.out.t1_final
     t1_mask = PREPROC_T1.out.mask_final
 
-    // Run synthseg on T1w
+    // Check we can access the file right away
+    def fs_license_path = file(params.freesurfer_license)
+    if( !fs_license_path.exists() ) {
+        error "ERROR: Cannot access Freesurfer license file at ${fs_license_path}. Check path and permissions."
+    } else if ( !fs_license_path.canRead() ) {
+        error "ERROR: Cannot read Freesurfer license file at ${fs_license_path}. Check permissions."
+    }
+
+    // Now create a channel
+    fs_license_ch = Channel.fromPath(params.freesurfer_license)
+
+    // Combine T1w input with FS license
     synthseg_input = t1_preproc
-        .map { it + [[], file(params.freesurfer_license)] }
+        .combine(fs_license_ch)
+        .map { meta, t1, license -> tuple(meta, t1, [], license) }
+
     SEGMENTATION_SYNTHSEG(synthseg_input)
 
     // ** DWI PREPROCESSING ** //

@@ -1,0 +1,8 @@
++ export ITK_GLOBAL_DEFAULT_NUMBER_OF_THREADS=1
++ ITK_GLOBAL_DEFAULT_NUMBER_OF_THREADS=1
++ export OMP_NUM_THREADS=1
++ OMP_NUM_THREADS=1
++ export OPENBLAS_NUM_THREADS=1
++ OPENBLAS_NUM_THREADS=1
++ cp license.txt /usr/local/freesurfer/license.txt
+cp: cannot stat 'license.txt': No such file or directory

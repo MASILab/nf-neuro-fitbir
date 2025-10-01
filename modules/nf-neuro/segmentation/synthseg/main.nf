@@ -1,7 +1,9 @@
 process SEGMENTATION_SYNTHSEG {
+    cache 'lenient'
     tag "$meta.id"
     label 'process_high_memory'
-
+    label (params.use_gpu ? 'gpu' : 'cpu')
+    
     container "freesurfer/freesurfer:7.4.1"
 
     input:

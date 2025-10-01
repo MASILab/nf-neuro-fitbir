@@ -1,0 +1,355 @@
+Sep-30 18:47:14.990 [main] DEBUG nextflow.cli.Launcher - $> nextflow -log run_1.log run main.nf -profile docker --input /fs5/p_masi/fitbir/example_datasets/example_nextflow/site-1 -resume
+Sep-30 18:47:15.286 [main] DEBUG nextflow.cli.CmdRun - N E X T F L O W  ~  version 24.10.4
+Sep-30 18:47:15.304 [main] DEBUG nextflow.plugin.PluginsFacade - Setting up plugin manager > mode=prod; embedded=false; plugins-dir=/workspaces/.nextflow/plugins; core-plugins: nf-amazon@2.9.2,nf-azure@1.10.2,nf-cloudcache@0.4.2,nf-codecommit@0.2.2,nf-console@1.1.4,nf-google@1.15.3,nf-tower@1.9.3,nf-wave@1.7.4
+Sep-30 18:47:15.325 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Enabled plugins: []
+Sep-30 18:47:15.326 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Disabled plugins: []
+Sep-30 18:47:15.331 [main] INFO  org.pf4j.DefaultPluginManager - PF4J version 3.12.0 in 'deployment' mode
+Sep-30 18:47:15.351 [main] INFO  org.pf4j.AbstractPluginManager - No plugins
+Sep-30 18:47:15.387 [main] DEBUG nextflow.config.ConfigBuilder - Found config local: /workspaces/nf-neuro-fitbir/nextflow.config
+Sep-30 18:47:15.390 [main] DEBUG nextflow.config.ConfigBuilder - Parsing config file: /workspaces/nf-neuro-fitbir/nextflow.config
+Sep-30 18:47:15.414 [main] DEBUG n.secret.LocalSecretsProvider - Secrets store: /workspaces/.nextflow/secrets/store.json
+Sep-30 18:47:15.418 [main] DEBUG nextflow.secret.SecretsLoader - Discovered secrets providers: [nextflow.secret.LocalSecretsProvider@65e7f52a] - activable => nextflow.secret.LocalSecretsProvider@65e7f52a
+Sep-30 18:47:15.429 [main] DEBUG nextflow.config.ConfigBuilder - Applying config profile: `docker`
+Sep-30 18:47:16.346 [main] DEBUG nextflow.config.ConfigBuilder - Available config profiles: [slurm, debug, mamba, apptainer, no_symlink, conda, singularity, docker]
+Sep-30 18:47:16.396 [main] DEBUG nextflow.cli.CmdRun - Enabling module binaries
+Sep-30 18:47:16.400 [main] DEBUG nextflow.cli.CmdRun - Applied DSL=2 by global default
+Sep-30 18:47:16.414 [main] DEBUG nextflow.cli.CmdRun - Launching `main.nf` [boring_einstein] DSL2 - revision: a57897e510
+Sep-30 18:47:16.416 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins default=[]
+Sep-30 18:47:16.417 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins resolved requirement=[]
+Sep-30 18:47:16.463 [main] DEBUG nextflow.Session - Session UUID: 7c7e535f-735d-4aaf-9989-6aab9951195a
+Sep-30 18:47:16.463 [main] DEBUG nextflow.Session - Run name: boring_einstein
+Sep-30 18:47:16.464 [main] DEBUG nextflow.Session - Executor pool size: 20
+Sep-30 18:47:16.472 [main] DEBUG nextflow.file.FilePorter - File porter settings maxRetries=3; maxTransfers=50; pollTimeout=null
+Sep-30 18:47:16.477 [main] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'FileTransfer' minSize=10; maxSize=60; workQueue=LinkedBlockingQueue[10000]; allowCoreThreadTimeout=false
+Sep-30 18:47:16.496 [main] DEBUG nextflow.cli.CmdRun - 
+  Version: 24.10.4 build 5934
+  Created: 20-01-2025 16:47 UTC 
+  System: Linux 6.8.0-60-generic
+  Runtime: Groovy 4.0.23 on OpenJDK 64-Bit Server VM 17.0.15-internal+0-adhoc..src
+  Encoding: UTF-8 (ANSI_X3.4-1968)
+  Process: 19693@07b9e41419e7 [172.17.0.2]
+  CPUs: 20 - Mem: 62.5 GB (27.5 GB) - Swap: 2 GB (172 KB)
+Sep-30 18:47:16.592 [main] DEBUG nextflow.Session - Work-dir: /fs5/p_masi/fitbir/example_datasets/example_nextflow/work [nfs]
+Sep-30 18:47:16.593 [main] DEBUG nextflow.Session - Script base path does not exist or is not a directory: /workspaces/nf-neuro-fitbir/bin
+Sep-30 18:47:16.602 [main] DEBUG nextflow.executor.ExecutorFactory - Extension executors providers=[]
+Sep-30 18:47:16.611 [main] DEBUG nextflow.Session - Observer factory: DefaultObserverFactory
+Sep-30 18:47:16.659 [main] DEBUG nextflow.cache.CacheFactory - Using Nextflow cache factory: nextflow.cache.DefaultCacheFactory
+Sep-30 18:47:16.667 [main] DEBUG nextflow.util.CustomThreadPool - Creating default thread pool > poolSize: 21; maxThreads: 1000
+Sep-30 18:47:16.833 [main] DEBUG nextflow.Session - Session start
+Sep-30 18:47:16.839 [main] DEBUG nextflow.trace.TraceFileObserver - Workflow started -- trace file: /fs5/p_masi/fitbir/example_datasets/example_nextflow/outputs/pipeline_info/execution_trace_2025-09-30_18-47-16.txt
+Sep-30 18:47:17.159 [main] DEBUG nextflow.script.ScriptRunner - > Launching execution
+Sep-30 18:47:18.983 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_single` matches labels `process_single` for process with name IO_BIDS:IO_READBIDS
+Sep-30 18:47:18.985 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:IO_READBIDS` matches process IO_BIDS:IO_READBIDS
+Sep-30 18:47:18.995 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Sep-30 18:47:18.996 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Sep-30 18:47:19.001 [main] DEBUG nextflow.executor.Executor - [warm up] executor > local
+Sep-30 18:47:19.005 [main] DEBUG n.processor.LocalPollingMonitor - Creating local task monitor for executor 'local' > cpus=20; memory=62.5 GB; capacity=20; pollInterval=100ms; dumpInterval=5m
+Sep-30 18:47:19.007 [main] DEBUG n.processor.TaskPollingMonitor - >>> barrier register (monitor: local)
+Sep-30 18:47:19.103 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_medium` matches labels `process_medium,process_high_memory` for process with name PREPROC_T1:PREPROC_N4
+Sep-30 18:47:19.104 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_high_memory` matches labels `process_medium,process_high_memory` for process with name PREPROC_T1:PREPROC_N4
+Sep-30 18:47:19.104 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:PREPROC_N4` matches process PREPROC_T1:PREPROC_N4
+Sep-30 18:47:19.110 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Sep-30 18:47:19.110 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Sep-30 18:47:19.128 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_single` matches labels `process_single,process_high_memory` for process with name PREPROC_T1:IMAGE_RESAMPLE
+Sep-30 18:47:19.129 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_high_memory` matches labels `process_single,process_high_memory` for process with name PREPROC_T1:IMAGE_RESAMPLE
+Sep-30 18:47:19.130 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:IMAGE_RESAMPLE` matches process PREPROC_T1:IMAGE_RESAMPLE
+Sep-30 18:47:19.133 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Sep-30 18:47:19.134 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Sep-30 18:47:19.150 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_medium` matches labels `process_medium` for process with name PREPROC_T1:BETCROP_SYNTHBET
+Sep-30 18:47:19.150 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:BETCROP_SYNTHBET` matches process PREPROC_T1:BETCROP_SYNTHBET
+Sep-30 18:47:19.153 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Sep-30 18:47:19.153 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Sep-30 18:47:19.185 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_high_memory` matches labels `process_high_memory` for process with name SEGMENTATION_SYNTHSEG
+Sep-30 18:47:19.185 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:SEGMENTATION_SYNTHSEG` matches process SEGMENTATION_SYNTHSEG
+Sep-30 18:47:19.189 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Sep-30 18:47:19.189 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Sep-30 18:47:19.199 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_single` matches labels `process_single,process_high_memory` for process with name IMAGE_RESAMPLE
+Sep-30 18:47:19.200 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_high_memory` matches labels `process_single,process_high_memory` for process with name IMAGE_RESAMPLE
+Sep-30 18:47:19.201 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:IMAGE_RESAMPLE` matches process IMAGE_RESAMPLE
+Sep-30 18:47:19.203 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Sep-30 18:47:19.203 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Sep-30 18:47:19.212 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_single` matches labels `process_single` for process with name UTILS_EXTRACTB0
+Sep-30 18:47:19.212 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:UTILS_EXTRACTB0` matches process UTILS_EXTRACTB0
+Sep-30 18:47:19.215 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Sep-30 18:47:19.215 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Sep-30 18:47:19.223 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_medium` matches labels `process_medium` for process with name BETCROP_SYNTHBET
+Sep-30 18:47:19.224 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:BETCROP_SYNTHBET` matches process BETCROP_SYNTHBET
+Sep-30 18:47:19.226 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Sep-30 18:47:19.226 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Sep-30 18:47:19.240 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_high` matches labels `process_high` for process with name REGISTRATION_ANTS
+Sep-30 18:47:19.241 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:REGISTRATION_ANTS` matches process REGISTRATION_ANTS
+Sep-30 18:47:19.244 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Sep-30 18:47:19.245 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Sep-30 18:47:19.258 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_low` matches labels `process_low` for process with name REGISTRATION_ANTSAPPLYTRANSFORMS_mask
+Sep-30 18:47:19.259 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:REGISTRATION_ANTSAPPLYTRANSFORMS*` matches process REGISTRATION_ANTSAPPLYTRANSFORMS_mask
+Sep-30 18:47:19.262 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Sep-30 18:47:19.262 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Sep-30 18:47:19.274 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_low` matches labels `process_low` for process with name REGISTRATION_ANTSAPPLYTRANSFORMS_wm
+Sep-30 18:47:19.275 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:REGISTRATION_ANTSAPPLYTRANSFORMS*` matches process REGISTRATION_ANTSAPPLYTRANSFORMS_wm
+Sep-30 18:47:19.278 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Sep-30 18:47:19.278 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Sep-30 18:47:19.291 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_high` matches labels `process_high` for process with name RECONST_FREEWATER
+Sep-30 18:47:19.293 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:RECONST_FREEWATER` matches process RECONST_FREEWATER
+Sep-30 18:47:19.296 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Sep-30 18:47:19.296 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Sep-30 18:47:19.319 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_high` matches labels `process_high` for process with name RECONST_DTIMETRICS
+Sep-30 18:47:19.320 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:RECONST_DTIMETRICS` matches process RECONST_DTIMETRICS
+Sep-30 18:47:19.326 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Sep-30 18:47:19.327 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Sep-30 18:47:19.346 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_high` matches labels `process_high` for process with name RECONST_FRF
+Sep-30 18:47:19.347 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:RECONST_FRF` matches process RECONST_FRF
+Sep-30 18:47:19.350 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Sep-30 18:47:19.350 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Sep-30 18:47:19.371 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_high` matches labels `process_high` for process with name RECONST_FODF
+Sep-30 18:47:19.372 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:RECONST_FODF` matches process RECONST_FODF
+Sep-30 18:47:19.375 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Sep-30 18:47:19.377 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Sep-30 18:47:19.384 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_single` matches labels `process_single` for process with name ML_BUNDLEPARC
+Sep-30 18:47:19.385 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:ML_BUNDLEPARC` matches process ML_BUNDLEPARC
+Sep-30 18:47:19.390 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Sep-30 18:47:19.396 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Sep-30 18:47:19.408 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_single` matches labels `process_single` for process with name STATS_METRICSINROI
+Sep-30 18:47:19.408 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:STATS_METRICSINROI` matches process STATS_METRICSINROI
+Sep-30 18:47:19.409 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Sep-30 18:47:19.410 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Sep-30 18:47:19.414 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_single` matches labels `process_single` for process with name STATS_VOLUME
+Sep-30 18:47:19.416 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Sep-30 18:47:19.416 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Sep-30 18:47:19.418 [main] DEBUG nextflow.Session - Config process names validation disabled as requested
+Sep-30 18:47:19.420 [main] DEBUG nextflow.Session - Igniting dataflow network (40)
+Sep-30 18:47:19.420 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > IO_BIDS:IO_READBIDS
+Sep-30 18:47:19.421 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > PREPROC_T1:PREPROC_N4
+Sep-30 18:47:19.421 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > PREPROC_T1:IMAGE_RESAMPLE
+Sep-30 18:47:19.421 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > PREPROC_T1:BETCROP_SYNTHBET
+Sep-30 18:47:19.431 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > SEGMENTATION_SYNTHSEG
+Sep-30 18:47:19.431 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > IMAGE_RESAMPLE
+Sep-30 18:47:19.432 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > UTILS_EXTRACTB0
+Sep-30 18:47:19.432 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > BETCROP_SYNTHBET
+Sep-30 18:47:19.432 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > REGISTRATION_ANTS
+Sep-30 18:47:19.433 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > REGISTRATION_ANTSAPPLYTRANSFORMS_mask
+Sep-30 18:47:19.433 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > REGISTRATION_ANTSAPPLYTRANSFORMS_wm
+Sep-30 18:47:19.433 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > RECONST_FREEWATER
+Sep-30 18:47:19.434 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > RECONST_DTIMETRICS
+Sep-30 18:47:19.434 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > RECONST_FRF
+Sep-30 18:47:19.434 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > RECONST_FODF
+Sep-30 18:47:19.435 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > ML_BUNDLEPARC
+Sep-30 18:47:19.435 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > STATS_METRICSINROI
+Sep-30 18:47:19.435 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > STATS_VOLUME
+Sep-30 18:47:19.436 [main] DEBUG nextflow.script.ScriptRunner - Parsed script files:
+  Script_d8c9ca3e118c8f56: /workspaces/nf-neuro-fitbir/./modules/nf-neuro/registration/antsapplytransforms/main.nf
+  Script_63b9dbc3649c38a2: /workspaces/nf-neuro-fitbir/./modules/nf-neuro/segmentation/synthseg/main.nf
+  Script_2df3063afcf5b530: /workspaces/nf-neuro-fitbir/./modules/nf-neuro/utils/extractb0/main.nf
+  Script_90465308241e42e9: /workspaces/nf-neuro-fitbir/./modules/nf-neuro/reconst/dtimetrics/main.nf
+  Script_477451b44fefee46: /workspaces/nf-neuro-fitbir/./subworkflows/nf-neuro/io_bids/main.nf
+  Script_64d732ac746a3ae5: /workspaces/nf-neuro-fitbir/./subworkflows/nf-neuro/preproc_t1/../../../modules/nf-neuro/preproc/n4/main.nf
+  Script_37e6f0baa7c7abca: /workspaces/nf-neuro-fitbir/./modules/local/stats/volume/main.nf
+  Script_27606586420d23e2: /workspaces/nf-neuro-fitbir/./subworkflows/nf-neuro/preproc_t1/../../../modules/nf-neuro/image/resample/main.nf
+  Script_d940273380b22d37: /workspaces/nf-neuro-fitbir/./modules/nf-neuro/reconst/freewater/main.nf
+  Script_455dc2f7c946df54: /workspaces/nf-neuro-fitbir/./subworkflows/nf-neuro/preproc_t1/../../../modules/nf-neuro/denoising/nlmeans/main.nf
+  Script_ab1e75a7ba90f964: /workspaces/nf-neuro-fitbir/./subworkflows/nf-neuro/io_bids/../../../modules/nf-neuro/io/readbids/main.nf
+  Script_8d73edf138d92a95: /workspaces/nf-neuro-fitbir/./subworkflows/nf-neuro/preproc_t1/main.nf
+  Script_884eed49b4d0380c: /workspaces/nf-neuro-fitbir/main.nf
+  Script_cad20a637cdd5f22: /workspaces/nf-neuro-fitbir/./subworkflows/nf-neuro/preproc_t1/../../../modules/nf-neuro/betcrop/antsbet/main.nf
+  Script_a99ff76c863126f6: /workspaces/nf-neuro-fitbir/./modules/nf-neuro/betcrop/synthbet/main.nf
+  Script_ed001f23f0ab3732: /workspaces/nf-neuro-fitbir/./modules/local/ml/bundleparc/main.nf
+  Script_a25ed1e60ea2b10e: /workspaces/nf-neuro-fitbir/./modules/nf-neuro/stats/metricsinroi/main.nf
+  Script_364c394c487d0a46: /workspaces/nf-neuro-fitbir/./modules/nf-neuro/reconst/frf/main.nf
+  Script_ab08d948a9038410: /workspaces/nf-neuro-fitbir/./modules/nf-neuro/reconst/fodf/main.nf
+  Script_3c9bdbc563748e76: /workspaces/nf-neuro-fitbir/./modules/nf-neuro/registration/ants/main.nf
+  Script_ba46ce49d4dac46a: /workspaces/nf-neuro-fitbir/./subworkflows/nf-neuro/preproc_t1/../../../modules/nf-neuro/image/cropvolume/main.nf
+Sep-30 18:47:19.436 [main] DEBUG nextflow.script.ScriptRunner - > Awaiting termination 
+Sep-30 18:47:19.436 [main] DEBUG nextflow.Session - Session await
+Sep-30 18:47:19.534 [Actor Thread 15] INFO  nextflow.processor.TaskProcessor - [38/255d30] Cached process > IO_BIDS:IO_READBIDS (1)
+Sep-30 18:47:19.559 [Actor Thread 15] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'PublishDir' minSize=10; maxSize=60; workQueue=LinkedBlockingQueue[10000]; allowCoreThreadTimeout=false
+Sep-30 18:47:19.616 [Actor Thread 20] INFO  nextflow.processor.TaskProcessor - [e6/67e76d] Cached process > IMAGE_RESAMPLE (sub-TBIHU286ALX_ses-160108)
+Sep-30 18:47:19.616 [Actor Thread 18] INFO  nextflow.processor.TaskProcessor - [0e/d2f5a1] Cached process > PREPROC_T1:PREPROC_N4 (sub-TBIRP848DFG_ses-170122)
+Sep-30 18:47:19.616 [Actor Thread 21] INFO  nextflow.processor.TaskProcessor - [6e/7e7c4a] Cached process > IMAGE_RESAMPLE (sub-TBIRP848DFG_ses-170122)
+Sep-30 18:47:19.616 [Actor Thread 17] INFO  nextflow.processor.TaskProcessor - [ef/2b71ec] Cached process > PREPROC_T1:PREPROC_N4 (sub-TBIHU286ALX_ses-160108)
+Sep-30 18:47:19.643 [Actor Thread 19] INFO  nextflow.processor.TaskProcessor - [51/513a67] Cached process > PREPROC_T1:IMAGE_RESAMPLE (sub-TBIRP848DFG_ses-170122)
+Sep-30 18:47:19.643 [Actor Thread 17] INFO  nextflow.processor.TaskProcessor - [ed/3fc27c] Cached process > PREPROC_T1:IMAGE_RESAMPLE (sub-TBIHU286ALX_ses-160108)
+Sep-30 18:47:19.644 [Actor Thread 9] INFO  nextflow.processor.TaskProcessor - [b3/3e5918] Cached process > UTILS_EXTRACTB0 (sub-TBIRP848DFG_ses-170122)
+Sep-30 18:47:19.646 [Actor Thread 14] INFO  nextflow.processor.TaskProcessor - [71/d2f7c3] Cached process > UTILS_EXTRACTB0 (sub-TBIHU286ALX_ses-160108)
+Sep-30 18:47:21.410 [Actor Thread 17] INFO  nextflow.processor.TaskProcessor - [cb/b35f76] Cached process > BETCROP_SYNTHBET (sub-TBIHU286ALX_ses-160108)
+Sep-30 18:47:21.410 [Actor Thread 19] INFO  nextflow.processor.TaskProcessor - [f0/e2e279] Cached process > BETCROP_SYNTHBET (sub-TBIRP848DFG_ses-170122)
+Sep-30 18:47:21.411 [Actor Thread 8] INFO  nextflow.processor.TaskProcessor - [ec/3e4ace] Cached process > PREPROC_T1:BETCROP_SYNTHBET (sub-TBIRP848DFG_ses-170122)
+Sep-30 18:47:21.412 [Actor Thread 10] INFO  nextflow.processor.TaskProcessor - [fd/2ba723] Cached process > PREPROC_T1:BETCROP_SYNTHBET (sub-TBIHU286ALX_ses-160108)
+Sep-30 18:47:21.490 [Actor Thread 17] INFO  nextflow.processor.TaskProcessor - [a9/1f8464] Cached process > REGISTRATION_ANTS (sub-TBIHU286ALX_ses-160108)
+Sep-30 18:47:21.497 [Actor Thread 14] INFO  nextflow.processor.TaskProcessor - [b2/a8a39b] Cached process > REGISTRATION_ANTS (sub-TBIRP848DFG_ses-170122)
+Sep-30 18:47:21.502 [Actor Thread 20] INFO  nextflow.processor.TaskProcessor - [ee/788e91] Cached process > RECONST_FREEWATER (sub-TBIHU286ALX_ses-160108)
+Sep-30 18:47:21.524 [Actor Thread 7] INFO  nextflow.processor.TaskProcessor - [b1/0fc31f] Cached process > SEGMENTATION_SYNTHSEG (sub-TBIRP848DFG_ses-170122)
+Sep-30 18:47:21.525 [Actor Thread 8] INFO  nextflow.processor.TaskProcessor - [a0/0a2304] Cached process > SEGMENTATION_SYNTHSEG (sub-TBIHU286ALX_ses-160108)
+Sep-30 18:47:21.574 [Actor Thread 17] DEBUG nextflow.processor.TaskProcessor - Process REGISTRATION_ANTS > Skipping output binding because one or more optional files are missing: fileoutparam<5:1>
+Sep-30 18:47:21.575 [Actor Thread 7] DEBUG nextflow.processor.TaskProcessor - Process SEGMENTATION_SYNTHSEG > Skipping output binding because one or more optional files are missing: fileoutparam<7:1>
+Sep-30 18:47:21.575 [Actor Thread 14] DEBUG nextflow.processor.TaskProcessor - Process REGISTRATION_ANTS > Skipping output binding because one or more optional files are missing: fileoutparam<5:1>
+Sep-30 18:47:21.576 [Actor Thread 7] DEBUG nextflow.processor.TaskProcessor - Process SEGMENTATION_SYNTHSEG > Skipping output binding because one or more optional files are missing: fileoutparam<8:1>
+Sep-30 18:47:21.580 [Actor Thread 7] DEBUG nextflow.processor.TaskProcessor - Process SEGMENTATION_SYNTHSEG > Skipping output binding because one or more optional files are missing: fileoutparam<9:1>
+Sep-30 18:47:21.581 [Actor Thread 7] DEBUG nextflow.processor.TaskProcessor - Process SEGMENTATION_SYNTHSEG > Skipping output binding because one or more optional files are missing: fileoutparam<10:1>
+Sep-30 18:47:21.585 [Actor Thread 8] DEBUG nextflow.processor.TaskProcessor - Process SEGMENTATION_SYNTHSEG > Skipping output binding because one or more optional files are missing: fileoutparam<7:1>
+Sep-30 18:47:21.585 [Actor Thread 8] DEBUG nextflow.processor.TaskProcessor - Process SEGMENTATION_SYNTHSEG > Skipping output binding because one or more optional files are missing: fileoutparam<8:1>
+Sep-30 18:47:21.587 [Actor Thread 8] DEBUG nextflow.processor.TaskProcessor - Process SEGMENTATION_SYNTHSEG > Skipping output binding because one or more optional files are missing: fileoutparam<9:1>
+Sep-30 18:47:21.588 [Actor Thread 8] DEBUG nextflow.processor.TaskProcessor - Process SEGMENTATION_SYNTHSEG > Skipping output binding because one or more optional files are missing: fileoutparam<10:1>
+Sep-30 18:47:22.374 [Actor Thread 9] INFO  nextflow.processor.TaskProcessor - [50/0c6523] Cached process > REGISTRATION_ANTSAPPLYTRANSFORMS_wm (sub-TBIRP848DFG_ses-170122)
+Sep-30 18:47:22.376 [Actor Thread 15] INFO  nextflow.processor.TaskProcessor - [db/5aac00] Cached process > REGISTRATION_ANTSAPPLYTRANSFORMS_mask (sub-TBIRP848DFG_ses-170122)
+Sep-30 18:47:22.376 [Actor Thread 16] INFO  nextflow.processor.TaskProcessor - [35/3db1be] Cached process > REGISTRATION_ANTSAPPLYTRANSFORMS_wm (sub-TBIHU286ALX_ses-160108)
+Sep-30 18:47:22.376 [Actor Thread 9] DEBUG nextflow.processor.TaskProcessor - Process REGISTRATION_ANTSAPPLYTRANSFORMS_wm > Skipping output binding because one or more optional files are missing: fileoutparam<1:1>
+Sep-30 18:47:22.378 [Actor Thread 13] INFO  nextflow.processor.TaskProcessor - [b8/b9e16e] Cached process > REGISTRATION_ANTSAPPLYTRANSFORMS_mask (sub-TBIHU286ALX_ses-160108)
+Sep-30 18:47:22.378 [Actor Thread 16] DEBUG nextflow.processor.TaskProcessor - Process REGISTRATION_ANTSAPPLYTRANSFORMS_wm > Skipping output binding because one or more optional files are missing: fileoutparam<1:1>
+Sep-30 18:47:22.379 [Actor Thread 15] DEBUG nextflow.processor.TaskProcessor - Process REGISTRATION_ANTSAPPLYTRANSFORMS_mask > Skipping output binding because one or more optional files are missing: fileoutparam<1:1>
+Sep-30 18:47:22.380 [Actor Thread 13] DEBUG nextflow.processor.TaskProcessor - Process REGISTRATION_ANTSAPPLYTRANSFORMS_mask > Skipping output binding because one or more optional files are missing: fileoutparam<1:1>
+Sep-30 18:47:22.406 [Actor Thread 9] INFO  nextflow.processor.TaskProcessor - [3a/10cdf7] Cached process > RECONST_FRF (sub-TBIHU286ALX_ses-160108)
+Sep-30 18:47:22.408 [Actor Thread 9] DEBUG nextflow.processor.TaskProcessor - Process RECONST_FRF > Skipping output binding because one or more optional files are missing: fileoutparam<1:1>
+Sep-30 18:47:22.409 [Actor Thread 9] DEBUG nextflow.processor.TaskProcessor - Process RECONST_FRF > Skipping output binding because one or more optional files are missing: fileoutparam<2:1>
+Sep-30 18:47:22.409 [Actor Thread 9] DEBUG nextflow.processor.TaskProcessor - Process RECONST_FRF > Skipping output binding because one or more optional files are missing: fileoutparam<3:1>
+Sep-30 18:47:22.418 [Actor Thread 21] INFO  nextflow.processor.TaskProcessor - [9a/9fc574] Cached process > RECONST_DTIMETRICS (sub-TBIHU286ALX_ses-160108)
+Sep-30 18:47:22.424 [Actor Thread 21] DEBUG nextflow.processor.TaskProcessor - Process RECONST_DTIMETRICS > Skipping output binding because one or more optional files are missing: fileoutparam<1:1>
+Sep-30 18:47:22.425 [Actor Thread 21] DEBUG nextflow.processor.TaskProcessor - Process RECONST_DTIMETRICS > Skipping output binding because one or more optional files are missing: fileoutparam<2:1>
+Sep-30 18:47:22.425 [Actor Thread 21] DEBUG nextflow.processor.TaskProcessor - Process RECONST_DTIMETRICS > Skipping output binding because one or more optional files are missing: fileoutparam<3:1>
+Sep-30 18:47:22.426 [Actor Thread 21] DEBUG nextflow.processor.TaskProcessor - Process RECONST_DTIMETRICS > Skipping output binding because one or more optional files are missing: fileoutparam<4:1>
+Sep-30 18:47:22.426 [Actor Thread 21] DEBUG nextflow.processor.TaskProcessor - Process RECONST_DTIMETRICS > Skipping output binding because one or more optional files are missing: fileoutparam<5:1>
+Sep-30 18:47:22.426 [Actor Thread 21] DEBUG nextflow.processor.TaskProcessor - Process RECONST_DTIMETRICS > Skipping output binding because one or more optional files are missing: fileoutparam<6:1>
+Sep-30 18:47:22.426 [Actor Thread 21] DEBUG nextflow.processor.TaskProcessor - Process RECONST_DTIMETRICS > Skipping output binding because one or more optional files are missing: fileoutparam<7:1>
+Sep-30 18:47:22.427 [Actor Thread 21] DEBUG nextflow.processor.TaskProcessor - Process RECONST_DTIMETRICS > Skipping output binding because one or more optional files are missing: fileoutparam<8:1>
+Sep-30 18:47:22.427 [Actor Thread 21] DEBUG nextflow.processor.TaskProcessor - Process RECONST_DTIMETRICS > Skipping output binding because one or more optional files are missing: fileoutparam<13:1>
+Sep-30 18:47:22.428 [Actor Thread 21] DEBUG nextflow.processor.TaskProcessor - Process RECONST_DTIMETRICS > Skipping output binding because one or more optional files are missing: fileoutparam<14:1>
+Sep-30 18:47:22.428 [Actor Thread 21] DEBUG nextflow.processor.TaskProcessor - Process RECONST_DTIMETRICS > Skipping output binding because one or more optional files are missing: fileoutparam<17:1>
+Sep-30 18:47:22.428 [Actor Thread 21] DEBUG nextflow.processor.TaskProcessor - Process RECONST_DTIMETRICS > Skipping output binding because one or more optional files are missing: fileoutparam<18:1>
+Sep-30 18:47:22.429 [Actor Thread 21] DEBUG nextflow.processor.TaskProcessor - Process RECONST_DTIMETRICS > Skipping output binding because one or more optional files are missing: fileoutparam<19:1>
+Sep-30 18:47:22.429 [Actor Thread 21] DEBUG nextflow.processor.TaskProcessor - Process RECONST_DTIMETRICS > Skipping output binding because one or more optional files are missing: fileoutparam<20:1>
+Sep-30 18:47:22.429 [Actor Thread 21] DEBUG nextflow.processor.TaskProcessor - Process RECONST_DTIMETRICS > Skipping output binding because one or more optional files are missing: fileoutparam<21:1>
+Sep-30 18:47:22.429 [Actor Thread 21] DEBUG nextflow.processor.TaskProcessor - Process RECONST_DTIMETRICS > Skipping output binding because one or more optional files are missing: fileoutparam<22:1>
+Sep-30 18:47:22.430 [Actor Thread 21] DEBUG nextflow.processor.TaskProcessor - Process RECONST_DTIMETRICS > Skipping output binding because one or more optional files are missing: fileoutparam<23:1>
+Sep-30 18:47:22.430 [Actor Thread 21] DEBUG nextflow.processor.TaskProcessor - Process RECONST_DTIMETRICS > Skipping output binding because one or more optional files are missing: fileoutparam<24:1>
+Sep-30 18:47:22.431 [Actor Thread 21] DEBUG nextflow.processor.TaskProcessor - Process RECONST_DTIMETRICS > Skipping output binding because one or more optional files are missing: fileoutparam<25:1>
+Sep-30 18:47:22.431 [Actor Thread 21] DEBUG nextflow.processor.TaskProcessor - Process RECONST_DTIMETRICS > Skipping output binding because one or more optional files are missing: fileoutparam<26:1>
+Sep-30 18:47:22.431 [Actor Thread 21] DEBUG nextflow.processor.TaskProcessor - Process RECONST_DTIMETRICS > Skipping output binding because one or more optional files are missing: fileoutparam<27:1>
+Sep-30 18:47:22.474 [Actor Thread 9] INFO  nextflow.processor.TaskProcessor - [d7/1b69de] Cached process > RECONST_FODF (sub-TBIHU286ALX_ses-160108)
+Sep-30 18:47:22.479 [Actor Thread 9] DEBUG nextflow.processor.TaskProcessor - Process RECONST_FODF > Skipping output binding because one or more optional files are missing: fileoutparam<1:1>
+Sep-30 18:47:22.479 [Actor Thread 9] DEBUG nextflow.processor.TaskProcessor - Process RECONST_FODF > Skipping output binding because one or more optional files are missing: fileoutparam<2:1>
+Sep-30 18:47:22.480 [Actor Thread 9] DEBUG nextflow.processor.TaskProcessor - Process RECONST_FODF > Skipping output binding because one or more optional files are missing: fileoutparam<3:1>
+Sep-30 18:47:22.480 [Actor Thread 9] DEBUG nextflow.processor.TaskProcessor - Process RECONST_FODF > Skipping output binding because one or more optional files are missing: fileoutparam<4:1>
+Sep-30 18:47:22.481 [Actor Thread 9] DEBUG nextflow.processor.TaskProcessor - Process RECONST_FODF > Skipping output binding because one or more optional files are missing: fileoutparam<5:1>
+Sep-30 18:47:22.481 [Actor Thread 9] DEBUG nextflow.processor.TaskProcessor - Process RECONST_FODF > Skipping output binding because one or more optional files are missing: fileoutparam<7:1>
+Sep-30 18:47:22.481 [Actor Thread 9] DEBUG nextflow.processor.TaskProcessor - Process RECONST_FODF > Skipping output binding because one or more optional files are missing: fileoutparam<8:1>
+Sep-30 18:47:22.482 [Actor Thread 9] DEBUG nextflow.processor.TaskProcessor - Process RECONST_FODF > Skipping output binding because one or more optional files are missing: fileoutparam<9:1>
+Sep-30 18:47:22.482 [Actor Thread 9] DEBUG nextflow.processor.TaskProcessor - Process RECONST_FODF > Skipping output binding because one or more optional files are missing: fileoutparam<10:1>
+Sep-30 18:47:22.484 [Actor Thread 9] DEBUG nextflow.processor.TaskProcessor - Process RECONST_FODF > Skipping output binding because one or more optional files are missing: fileoutparam<11:1>
+Sep-30 18:47:22.485 [Actor Thread 9] DEBUG nextflow.processor.TaskProcessor - Process RECONST_FODF > Skipping output binding because one or more optional files are missing: fileoutparam<12:1>
+Sep-30 18:47:22.486 [Actor Thread 9] DEBUG nextflow.processor.TaskProcessor - Process RECONST_FODF > Skipping output binding because one or more optional files are missing: fileoutparam<13:1>
+Sep-30 18:47:22.644 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Sep-30 18:47:22.646 [Task submitter] INFO  nextflow.Session - [55/79b71b] Submitted process > RECONST_FREEWATER (sub-TBIRP848DFG_ses-170122)
+Sep-30 18:47:23.295 [Actor Thread 13] INFO  nextflow.processor.TaskProcessor - [31/d14923] Cached process > ML_BUNDLEPARC (sub-TBIHU286ALX_ses-160108)
+Sep-30 18:47:41.842 [Actor Thread 19] INFO  nextflow.processor.TaskProcessor - [1c/38ffda] Cached process > STATS_VOLUME (sub-TBIHU286ALX_ses-160108)
+Sep-30 18:47:41.842 [Actor Thread 8] INFO  nextflow.processor.TaskProcessor - [cd/167a4f] Cached process > STATS_METRICSINROI (sub-TBIHU286ALX_ses-160108)
+Sep-30 18:50:33.881 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 16; name: RECONST_FREEWATER (sub-TBIRP848DFG_ses-170122); status: COMPLETED; exit: 137; error: -; workDir: /fs5/p_masi/fitbir/example_datasets/example_nextflow/work/55/79b71b014a1e8f322a79d3ccc9ab66]
+Sep-30 18:50:33.882 [Task monitor] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'TaskFinalizer' minSize=10; maxSize=60; workQueue=LinkedBlockingQueue[10000]; allowCoreThreadTimeout=false
+Sep-30 18:50:33.896 [TaskFinalizer-1] DEBUG nextflow.processor.TaskProcessor - Handling unexpected condition for
+  task: name=RECONST_FREEWATER (sub-TBIRP848DFG_ses-170122); work-dir=/fs5/p_masi/fitbir/example_datasets/example_nextflow/work/55/79b71b014a1e8f322a79d3ccc9ab66
+  error [nextflow.exception.ProcessFailedException]: Process `RECONST_FREEWATER (sub-TBIRP848DFG_ses-170122)` terminated with an error exit status (137)
+Sep-30 18:50:33.914 [TaskFinalizer-1] INFO  nextflow.processor.TaskProcessor - [55/79b71b] NOTE: Process `RECONST_FREEWATER (sub-TBIRP848DFG_ses-170122)` terminated with an error exit status (137) -- Execution is retried (1)
+Sep-30 18:50:33.957 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Sep-30 18:50:33.958 [Task submitter] INFO  nextflow.Session - [5c/c4a538] Re-submitted process > RECONST_FREEWATER (sub-TBIRP848DFG_ses-170122)
+Sep-30 18:52:19.140 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 30; name: RECONST_FREEWATER (sub-TBIRP848DFG_ses-170122); status: RUNNING; exit: -; error: -; workDir: /fs5/p_masi/fitbir/example_datasets/example_nextflow/work/5c/c4a538234ac687d6495d46a24d9ef5]
+Sep-30 18:55:31.513 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 30; name: RECONST_FREEWATER (sub-TBIRP848DFG_ses-170122); status: COMPLETED; exit: 0; error: -; workDir: /fs5/p_masi/fitbir/example_datasets/example_nextflow/work/5c/c4a538234ac687d6495d46a24d9ef5]
+Sep-30 18:55:31.626 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Sep-30 18:55:31.627 [Task submitter] INFO  nextflow.Session - [39/0368f7] Submitted process > RECONST_FRF (sub-TBIRP848DFG_ses-170122)
+Sep-30 18:55:31.648 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Sep-30 18:55:31.649 [Task submitter] INFO  nextflow.Session - [97/8a7ff8] Submitted process > RECONST_DTIMETRICS (sub-TBIRP848DFG_ses-170122)
+Sep-30 18:55:47.407 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 31; name: RECONST_DTIMETRICS (sub-TBIRP848DFG_ses-170122); status: COMPLETED; exit: 137; error: -; workDir: /fs5/p_masi/fitbir/example_datasets/example_nextflow/work/97/8a7ff8c449e5712427ebff746633d5]
+Sep-30 18:55:47.411 [TaskFinalizer-3] DEBUG nextflow.processor.TaskProcessor - Handling unexpected condition for
+  task: name=RECONST_DTIMETRICS (sub-TBIRP848DFG_ses-170122); work-dir=/fs5/p_masi/fitbir/example_datasets/example_nextflow/work/97/8a7ff8c449e5712427ebff746633d5
+  error [nextflow.exception.ProcessFailedException]: Process `RECONST_DTIMETRICS (sub-TBIRP848DFG_ses-170122)` terminated with an error exit status (137)
+Sep-30 18:55:47.413 [TaskFinalizer-3] INFO  nextflow.processor.TaskProcessor - [97/8a7ff8] NOTE: Process `RECONST_DTIMETRICS (sub-TBIRP848DFG_ses-170122)` terminated with an error exit status (137) -- Execution is retried (1)
+Sep-30 18:55:47.458 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Sep-30 18:55:47.458 [Task submitter] INFO  nextflow.Session - [11/34a36e] Re-submitted process > RECONST_DTIMETRICS (sub-TBIRP848DFG_ses-170122)
+Sep-30 18:55:49.989 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 32; name: RECONST_FRF (sub-TBIRP848DFG_ses-170122); status: COMPLETED; exit: 137; error: -; workDir: /fs5/p_masi/fitbir/example_datasets/example_nextflow/work/39/0368f7acebd626dd21ddb2366ada9a]
+Sep-30 18:55:49.992 [TaskFinalizer-4] DEBUG nextflow.processor.TaskProcessor - Handling unexpected condition for
+  task: name=RECONST_FRF (sub-TBIRP848DFG_ses-170122); work-dir=/fs5/p_masi/fitbir/example_datasets/example_nextflow/work/39/0368f7acebd626dd21ddb2366ada9a
+  error [nextflow.exception.ProcessFailedException]: Process `RECONST_FRF (sub-TBIRP848DFG_ses-170122)` terminated with an error exit status (137)
+Sep-30 18:55:49.994 [TaskFinalizer-4] INFO  nextflow.processor.TaskProcessor - [39/0368f7] NOTE: Process `RECONST_FRF (sub-TBIRP848DFG_ses-170122)` terminated with an error exit status (137) -- Execution is retried (1)
+Sep-30 18:57:19.156 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 33; name: RECONST_DTIMETRICS (sub-TBIRP848DFG_ses-170122); status: RUNNING; exit: -; error: -; workDir: /fs5/p_masi/fitbir/example_datasets/example_nextflow/work/11/34a36ed980adfc649fa59848c846fb]
+Sep-30 18:58:14.041 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 33; name: RECONST_DTIMETRICS (sub-TBIRP848DFG_ses-170122); status: COMPLETED; exit: 0; error: -; workDir: /fs5/p_masi/fitbir/example_datasets/example_nextflow/work/11/34a36ed980adfc649fa59848c846fb]
+Sep-30 18:58:14.065 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Sep-30 18:58:14.065 [Task submitter] INFO  nextflow.Session - [d6/6b038b] Re-submitted process > RECONST_FRF (sub-TBIRP848DFG_ses-170122)
+Sep-30 18:58:14.091 [TaskFinalizer-5] DEBUG nextflow.processor.TaskProcessor - Process RECONST_DTIMETRICS > Skipping output binding because one or more optional files are missing: fileoutparam<1:1>
+Sep-30 18:58:14.091 [TaskFinalizer-5] DEBUG nextflow.processor.TaskProcessor - Process RECONST_DTIMETRICS > Skipping output binding because one or more optional files are missing: fileoutparam<2:1>
+Sep-30 18:58:14.092 [TaskFinalizer-5] DEBUG nextflow.processor.TaskProcessor - Process RECONST_DTIMETRICS > Skipping output binding because one or more optional files are missing: fileoutparam<3:1>
+Sep-30 18:58:14.092 [TaskFinalizer-5] DEBUG nextflow.processor.TaskProcessor - Process RECONST_DTIMETRICS > Skipping output binding because one or more optional files are missing: fileoutparam<4:1>
+Sep-30 18:58:14.092 [TaskFinalizer-5] DEBUG nextflow.processor.TaskProcessor - Process RECONST_DTIMETRICS > Skipping output binding because one or more optional files are missing: fileoutparam<5:1>
+Sep-30 18:58:14.093 [TaskFinalizer-5] DEBUG nextflow.processor.TaskProcessor - Process RECONST_DTIMETRICS > Skipping output binding because one or more optional files are missing: fileoutparam<6:1>
+Sep-30 18:58:14.093 [TaskFinalizer-5] DEBUG nextflow.processor.TaskProcessor - Process RECONST_DTIMETRICS > Skipping output binding because one or more optional files are missing: fileoutparam<7:1>
+Sep-30 18:58:14.094 [TaskFinalizer-5] DEBUG nextflow.processor.TaskProcessor - Process RECONST_DTIMETRICS > Skipping output binding because one or more optional files are missing: fileoutparam<8:1>
+Sep-30 18:58:14.094 [TaskFinalizer-5] DEBUG nextflow.processor.TaskProcessor - Process RECONST_DTIMETRICS > Skipping output binding because one or more optional files are missing: fileoutparam<13:1>
+Sep-30 18:58:14.094 [TaskFinalizer-5] DEBUG nextflow.processor.TaskProcessor - Process RECONST_DTIMETRICS > Skipping output binding because one or more optional files are missing: fileoutparam<14:1>
+Sep-30 18:58:14.094 [TaskFinalizer-5] DEBUG nextflow.processor.TaskProcessor - Process RECONST_DTIMETRICS > Skipping output binding because one or more optional files are missing: fileoutparam<17:1>
+Sep-30 18:58:14.095 [TaskFinalizer-5] DEBUG nextflow.processor.TaskProcessor - Process RECONST_DTIMETRICS > Skipping output binding because one or more optional files are missing: fileoutparam<18:1>
+Sep-30 18:58:14.095 [TaskFinalizer-5] DEBUG nextflow.processor.TaskProcessor - Process RECONST_DTIMETRICS > Skipping output binding because one or more optional files are missing: fileoutparam<19:1>
+Sep-30 18:58:14.095 [TaskFinalizer-5] DEBUG nextflow.processor.TaskProcessor - Process RECONST_DTIMETRICS > Skipping output binding because one or more optional files are missing: fileoutparam<20:1>
+Sep-30 18:58:14.095 [TaskFinalizer-5] DEBUG nextflow.processor.TaskProcessor - Process RECONST_DTIMETRICS > Skipping output binding because one or more optional files are missing: fileoutparam<21:1>
+Sep-30 18:58:14.096 [TaskFinalizer-5] DEBUG nextflow.processor.TaskProcessor - Process RECONST_DTIMETRICS > Skipping output binding because one or more optional files are missing: fileoutparam<22:1>
+Sep-30 18:58:14.096 [TaskFinalizer-5] DEBUG nextflow.processor.TaskProcessor - Process RECONST_DTIMETRICS > Skipping output binding because one or more optional files are missing: fileoutparam<23:1>
+Sep-30 18:58:14.096 [TaskFinalizer-5] DEBUG nextflow.processor.TaskProcessor - Process RECONST_DTIMETRICS > Skipping output binding because one or more optional files are missing: fileoutparam<24:1>
+Sep-30 18:58:14.097 [TaskFinalizer-5] DEBUG nextflow.processor.TaskProcessor - Process RECONST_DTIMETRICS > Skipping output binding because one or more optional files are missing: fileoutparam<25:1>
+Sep-30 18:58:14.097 [TaskFinalizer-5] DEBUG nextflow.processor.TaskProcessor - Process RECONST_DTIMETRICS > Skipping output binding because one or more optional files are missing: fileoutparam<26:1>
+Sep-30 18:58:14.097 [TaskFinalizer-5] DEBUG nextflow.processor.TaskProcessor - Process RECONST_DTIMETRICS > Skipping output binding because one or more optional files are missing: fileoutparam<27:1>
+Sep-30 18:59:47.253 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 34; name: RECONST_FRF (sub-TBIRP848DFG_ses-170122); status: COMPLETED; exit: 0; error: -; workDir: /fs5/p_masi/fitbir/example_datasets/example_nextflow/work/d6/6b038b3c436eb57a4820cb1768c949]
+Sep-30 18:59:47.277 [TaskFinalizer-6] DEBUG nextflow.processor.TaskProcessor - Process RECONST_FRF > Skipping output binding because one or more optional files are missing: fileoutparam<1:1>
+Sep-30 18:59:47.277 [TaskFinalizer-6] DEBUG nextflow.processor.TaskProcessor - Process RECONST_FRF > Skipping output binding because one or more optional files are missing: fileoutparam<2:1>
+Sep-30 18:59:47.278 [TaskFinalizer-6] DEBUG nextflow.processor.TaskProcessor - Process RECONST_FRF > Skipping output binding because one or more optional files are missing: fileoutparam<3:1>
+Sep-30 18:59:47.366 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Sep-30 18:59:47.367 [Task submitter] INFO  nextflow.Session - [c2/521935] Submitted process > RECONST_FODF (sub-TBIRP848DFG_ses-170122)
+Sep-30 19:00:02.943 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 35; name: RECONST_FODF (sub-TBIRP848DFG_ses-170122); status: COMPLETED; exit: 137; error: -; workDir: /fs5/p_masi/fitbir/example_datasets/example_nextflow/work/c2/521935d9b0a219a3becfe730faee94]
+Sep-30 19:00:02.946 [TaskFinalizer-7] DEBUG nextflow.processor.TaskProcessor - Handling unexpected condition for
+  task: name=RECONST_FODF (sub-TBIRP848DFG_ses-170122); work-dir=/fs5/p_masi/fitbir/example_datasets/example_nextflow/work/c2/521935d9b0a219a3becfe730faee94
+  error [nextflow.exception.ProcessFailedException]: Process `RECONST_FODF (sub-TBIRP848DFG_ses-170122)` terminated with an error exit status (137)
+Sep-30 19:00:02.948 [TaskFinalizer-7] INFO  nextflow.processor.TaskProcessor - [c2/521935] NOTE: Process `RECONST_FODF (sub-TBIRP848DFG_ses-170122)` terminated with an error exit status (137) -- Execution is retried (1)
+Sep-30 19:00:03.164 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Sep-30 19:00:03.164 [Task submitter] INFO  nextflow.Session - [51/6053d0] Re-submitted process > RECONST_FODF (sub-TBIRP848DFG_ses-170122)
+Sep-30 19:02:19.182 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 36; name: RECONST_FODF (sub-TBIRP848DFG_ses-170122); status: RUNNING; exit: -; error: -; workDir: /fs5/p_masi/fitbir/example_datasets/example_nextflow/work/51/6053d0cf72bd686963e797a4f66c66]
+Sep-30 19:04:17.162 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 36; name: RECONST_FODF (sub-TBIRP848DFG_ses-170122); status: COMPLETED; exit: 0; error: -; workDir: /fs5/p_masi/fitbir/example_datasets/example_nextflow/work/51/6053d0cf72bd686963e797a4f66c66]
+Sep-30 19:04:17.206 [TaskFinalizer-8] DEBUG nextflow.processor.TaskProcessor - Process RECONST_FODF > Skipping output binding because one or more optional files are missing: fileoutparam<1:1>
+Sep-30 19:04:17.207 [TaskFinalizer-8] DEBUG nextflow.processor.TaskProcessor - Process RECONST_FODF > Skipping output binding because one or more optional files are missing: fileoutparam<2:1>
+Sep-30 19:04:17.207 [TaskFinalizer-8] DEBUG nextflow.processor.TaskProcessor - Process RECONST_FODF > Skipping output binding because one or more optional files are missing: fileoutparam<3:1>
+Sep-30 19:04:17.207 [TaskFinalizer-8] DEBUG nextflow.processor.TaskProcessor - Process RECONST_FODF > Skipping output binding because one or more optional files are missing: fileoutparam<4:1>
+Sep-30 19:04:17.208 [TaskFinalizer-8] DEBUG nextflow.processor.TaskProcessor - Process RECONST_FODF > Skipping output binding because one or more optional files are missing: fileoutparam<5:1>
+Sep-30 19:04:17.208 [TaskFinalizer-8] DEBUG nextflow.processor.TaskProcessor - Process RECONST_FODF > Skipping output binding because one or more optional files are missing: fileoutparam<7:1>
+Sep-30 19:04:17.208 [TaskFinalizer-8] DEBUG nextflow.processor.TaskProcessor - Process RECONST_FODF > Skipping output binding because one or more optional files are missing: fileoutparam<8:1>
+Sep-30 19:04:17.209 [TaskFinalizer-8] DEBUG nextflow.processor.TaskProcessor - Process RECONST_FODF > Skipping output binding because one or more optional files are missing: fileoutparam<9:1>
+Sep-30 19:04:17.209 [TaskFinalizer-8] DEBUG nextflow.processor.TaskProcessor - Process RECONST_FODF > Skipping output binding because one or more optional files are missing: fileoutparam<10:1>
+Sep-30 19:04:17.209 [TaskFinalizer-8] DEBUG nextflow.processor.TaskProcessor - Process RECONST_FODF > Skipping output binding because one or more optional files are missing: fileoutparam<11:1>
+Sep-30 19:04:17.210 [TaskFinalizer-8] DEBUG nextflow.processor.TaskProcessor - Process RECONST_FODF > Skipping output binding because one or more optional files are missing: fileoutparam<12:1>
+Sep-30 19:04:17.210 [TaskFinalizer-8] DEBUG nextflow.processor.TaskProcessor - Process RECONST_FODF > Skipping output binding because one or more optional files are missing: fileoutparam<13:1>
+Sep-30 19:04:20.525 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Sep-30 19:04:20.526 [Task submitter] INFO  nextflow.Session - [3a/a318f5] Submitted process > ML_BUNDLEPARC (sub-TBIRP848DFG_ses-170122)
+Sep-30 19:04:41.437 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 37; name: ML_BUNDLEPARC (sub-TBIRP848DFG_ses-170122); status: COMPLETED; exit: 137; error: -; workDir: /fs5/p_masi/fitbir/example_datasets/example_nextflow/work/3a/a318f56ed07298afb207774bddb972]
+Sep-30 19:04:41.441 [TaskFinalizer-9] DEBUG nextflow.processor.TaskProcessor - Handling unexpected condition for
+  task: name=ML_BUNDLEPARC (sub-TBIRP848DFG_ses-170122); work-dir=/fs5/p_masi/fitbir/example_datasets/example_nextflow/work/3a/a318f56ed07298afb207774bddb972
+  error [nextflow.exception.ProcessFailedException]: Process `ML_BUNDLEPARC (sub-TBIRP848DFG_ses-170122)` terminated with an error exit status (137)
+Sep-30 19:04:41.442 [TaskFinalizer-9] INFO  nextflow.processor.TaskProcessor - [3a/a318f5] NOTE: Process `ML_BUNDLEPARC (sub-TBIRP848DFG_ses-170122)` terminated with an error exit status (137) -- Execution is retried (1)
+Sep-30 19:04:41.472 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Sep-30 19:04:41.472 [Task submitter] INFO  nextflow.Session - [3e/2acc82] Re-submitted process > ML_BUNDLEPARC (sub-TBIRP848DFG_ses-170122)
+Sep-30 19:06:20.986 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 38; name: ML_BUNDLEPARC (sub-TBIRP848DFG_ses-170122); status: COMPLETED; exit: 0; error: -; workDir: /fs5/p_masi/fitbir/example_datasets/example_nextflow/work/3e/2acc828e16b79108489cce1ef6c9bb]
+Sep-30 19:06:21.077 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Sep-30 19:06:21.078 [Task submitter] INFO  nextflow.Session - [9a/c3fe0b] Submitted process > STATS_METRICSINROI (sub-TBIRP848DFG_ses-170122)
+Sep-30 19:06:21.108 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Sep-30 19:06:21.108 [Task submitter] INFO  nextflow.Session - [12/a5ccf6] Submitted process > STATS_VOLUME (sub-TBIRP848DFG_ses-170122)
+Sep-30 19:06:33.879 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 39; name: STATS_VOLUME (sub-TBIRP848DFG_ses-170122); status: COMPLETED; exit: 0; error: -; workDir: /fs5/p_masi/fitbir/example_datasets/example_nextflow/work/12/a5ccf642fdf88e00697650daa66918]
+Sep-30 19:07:19.246 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 40; name: STATS_METRICSINROI (sub-TBIRP848DFG_ses-170122); status: RUNNING; exit: -; error: -; workDir: /fs5/p_masi/fitbir/example_datasets/example_nextflow/work/9a/c3fe0b2d44f63f58c9fa0ccc88866c]
+Sep-30 19:12:19.316 [Task monitor] DEBUG n.processor.TaskPollingMonitor - !! executor local > tasks to be completed: 1 -- submitted tasks are shown below
+~> TaskHandler[id: 40; name: STATS_METRICSINROI (sub-TBIRP848DFG_ses-170122); status: RUNNING; exit: -; error: -; workDir: /fs5/p_masi/fitbir/example_datasets/example_nextflow/work/9a/c3fe0b2d44f63f58c9fa0ccc88866c]
+Sep-30 19:12:22.777 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 40; name: STATS_METRICSINROI (sub-TBIRP848DFG_ses-170122); status: COMPLETED; exit: 0; error: -; workDir: /fs5/p_masi/fitbir/example_datasets/example_nextflow/work/9a/c3fe0b2d44f63f58c9fa0ccc88866c]
+Sep-30 19:12:22.826 [main] DEBUG nextflow.Session - Session await > all processes finished
+Sep-30 19:12:22.878 [Task monitor] DEBUG n.processor.TaskPollingMonitor - <<< barrier arrives (monitor: local) - terminating tasks monitor poll loop
+Sep-30 19:12:22.878 [main] DEBUG nextflow.Session - Session await > all barriers passed
+Sep-30 19:12:22.880 [main] DEBUG nextflow.util.ThreadPoolManager - Thread pool 'TaskFinalizer' shutdown completed (hard=false)
+Sep-30 19:12:22.881 [main] DEBUG nextflow.util.ThreadPoolManager - Thread pool 'PublishDir' shutdown completed (hard=false)
+Sep-30 19:12:22.889 [main] DEBUG n.trace.WorkflowStatsObserver - Workflow completed > WorkflowStats[succeededCount=7; failedCount=5; ignoredCount=0; cachedCount=28; pendingCount=0; submittedCount=0; runningCount=0; retriesCount=5; abortedCount=0; succeedDuration=2h 47m 1s; failedDuration=22m 30s; cachedDuration=7h 4m 21s;loadCpus=0; loadMemory=0; peakRunning=2; peakCpus=18; peakMemory=42 GB; ]
+Sep-30 19:12:22.889 [main] DEBUG nextflow.trace.TraceFileObserver - Workflow completed -- saving trace file
+Sep-30 19:12:22.892 [main] DEBUG nextflow.trace.ReportObserver - Workflow completed -- rendering execution report
+Sep-30 19:12:23.462 [main] DEBUG nextflow.trace.TimelineObserver - Workflow completed -- rendering execution timeline
+Sep-30 19:12:23.733 [main] DEBUG nextflow.cache.CacheDB - Closing CacheDB done
+Sep-30 19:12:23.787 [main] DEBUG nextflow.util.ThreadPoolManager - Thread pool 'FileTransfer' shutdown completed (hard=false)
+Sep-30 19:12:23.788 [main] DEBUG nextflow.script.ScriptRunner - > Execution complete -- Goodbye

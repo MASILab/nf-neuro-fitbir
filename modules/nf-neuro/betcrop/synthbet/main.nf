@@ -1,6 +1,7 @@
 process BETCROP_SYNTHBET {
     tag "$meta.id"
-    label 'process_low'
+    label 'process_medium'
+    label (params.use_gpu ? 'gpu' : 'cpu')
 
     container "freesurfer/freesurfer:7.4.1"
 

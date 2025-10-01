@@ -1,0 +1,273 @@
+Sep-30 16:21:05.039 [main] DEBUG nextflow.cli.Launcher - $> nextflow -log run_1.log run main.nf -profile docker --input /fs5/p_masi/fitbir/example_datasets/example_nextflow/site-1 -resume
+Sep-30 16:21:05.474 [main] DEBUG nextflow.cli.CmdRun - N E X T F L O W  ~  version 24.10.4
+Sep-30 16:21:05.489 [main] DEBUG nextflow.plugin.PluginsFacade - Setting up plugin manager > mode=prod; embedded=false; plugins-dir=/workspaces/.nextflow/plugins; core-plugins: nf-amazon@2.9.2,nf-azure@1.10.2,nf-cloudcache@0.4.2,nf-codecommit@0.2.2,nf-console@1.1.4,nf-google@1.15.3,nf-tower@1.9.3,nf-wave@1.7.4
+Sep-30 16:21:05.517 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Enabled plugins: []
+Sep-30 16:21:05.519 [main] INFO  o.pf4j.DefaultPluginStatusProvider - Disabled plugins: []
+Sep-30 16:21:05.522 [main] INFO  org.pf4j.DefaultPluginManager - PF4J version 3.12.0 in 'deployment' mode
+Sep-30 16:21:05.535 [main] INFO  org.pf4j.AbstractPluginManager - No plugins
+Sep-30 16:21:05.560 [main] DEBUG nextflow.config.ConfigBuilder - Found config local: /workspaces/nf-neuro-fitbir/nextflow.config
+Sep-30 16:21:05.562 [main] DEBUG nextflow.config.ConfigBuilder - Parsing config file: /workspaces/nf-neuro-fitbir/nextflow.config
+Sep-30 16:21:05.583 [main] DEBUG n.secret.LocalSecretsProvider - Secrets store: /workspaces/.nextflow/secrets/store.json
+Sep-30 16:21:05.587 [main] DEBUG nextflow.secret.SecretsLoader - Discovered secrets providers: [nextflow.secret.LocalSecretsProvider@65e7f52a] - activable => nextflow.secret.LocalSecretsProvider@65e7f52a
+Sep-30 16:21:05.598 [main] DEBUG nextflow.config.ConfigBuilder - Applying config profile: `docker`
+Sep-30 16:21:06.433 [main] DEBUG nextflow.config.ConfigBuilder - Available config profiles: [slurm, debug, mamba, apptainer, no_symlink, conda, singularity, docker]
+Sep-30 16:21:06.482 [main] DEBUG nextflow.cli.CmdRun - Enabling module binaries
+Sep-30 16:21:06.485 [main] DEBUG nextflow.cli.CmdRun - Applied DSL=2 by global default
+Sep-30 16:21:06.500 [main] DEBUG nextflow.cli.CmdRun - Launching `main.nf` [festering_saha] DSL2 - revision: a57897e510
+Sep-30 16:21:06.502 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins default=[]
+Sep-30 16:21:06.502 [main] DEBUG nextflow.plugin.PluginsFacade - Plugins resolved requirement=[]
+Sep-30 16:21:06.551 [main] DEBUG nextflow.Session - Session UUID: 7c7e535f-735d-4aaf-9989-6aab9951195a
+Sep-30 16:21:06.551 [main] DEBUG nextflow.Session - Run name: festering_saha
+Sep-30 16:21:06.551 [main] DEBUG nextflow.Session - Executor pool size: 20
+Sep-30 16:21:06.559 [main] DEBUG nextflow.file.FilePorter - File porter settings maxRetries=3; maxTransfers=50; pollTimeout=null
+Sep-30 16:21:06.564 [main] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'FileTransfer' minSize=10; maxSize=60; workQueue=LinkedBlockingQueue[10000]; allowCoreThreadTimeout=false
+Sep-30 16:21:06.582 [main] DEBUG nextflow.cli.CmdRun - 
+  Version: 24.10.4 build 5934
+  Created: 20-01-2025 16:47 UTC 
+  System: Linux 6.8.0-60-generic
+  Runtime: Groovy 4.0.23 on OpenJDK 64-Bit Server VM 17.0.15-internal+0-adhoc..src
+  Encoding: UTF-8 (ANSI_X3.4-1968)
+  Process: 29532@d36a0ccaa757 [172.17.0.2]
+  CPUs: 20 - Mem: 62.5 GB (21.6 GB) - Swap: 2 GB (38.6 MB)
+Sep-30 16:21:06.652 [main] DEBUG nextflow.Session - Work-dir: /fs5/p_masi/fitbir/example_datasets/example_nextflow/work [nfs]
+Sep-30 16:21:06.653 [main] DEBUG nextflow.Session - Script base path does not exist or is not a directory: /workspaces/nf-neuro-fitbir/bin
+Sep-30 16:21:06.662 [main] DEBUG nextflow.executor.ExecutorFactory - Extension executors providers=[]
+Sep-30 16:21:06.671 [main] DEBUG nextflow.Session - Observer factory: DefaultObserverFactory
+Sep-30 16:21:06.718 [main] DEBUG nextflow.cache.CacheFactory - Using Nextflow cache factory: nextflow.cache.DefaultCacheFactory
+Sep-30 16:21:06.727 [main] DEBUG nextflow.util.CustomThreadPool - Creating default thread pool > poolSize: 21; maxThreads: 1000
+Sep-30 16:21:06.891 [main] DEBUG nextflow.Session - Session start
+Sep-30 16:21:06.893 [main] DEBUG nextflow.trace.TraceFileObserver - Workflow started -- trace file: /fs5/p_masi/fitbir/example_datasets/example_nextflow/outputs/pipeline_info/execution_trace_2025-09-30_16-21-06.txt
+Sep-30 16:21:07.202 [main] DEBUG nextflow.script.ScriptRunner - > Launching execution
+Sep-30 16:21:09.129 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_single` matches labels `process_single` for process with name IO_BIDS:IO_READBIDS
+Sep-30 16:21:09.131 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:IO_READBIDS` matches process IO_BIDS:IO_READBIDS
+Sep-30 16:21:09.143 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Sep-30 16:21:09.144 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Sep-30 16:21:09.152 [main] DEBUG nextflow.executor.Executor - [warm up] executor > local
+Sep-30 16:21:09.158 [main] DEBUG n.processor.LocalPollingMonitor - Creating local task monitor for executor 'local' > cpus=20; memory=62.5 GB; capacity=20; pollInterval=100ms; dumpInterval=5m
+Sep-30 16:21:09.161 [main] DEBUG n.processor.TaskPollingMonitor - >>> barrier register (monitor: local)
+Sep-30 16:21:09.254 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_medium` matches labels `process_medium,process_high_memory` for process with name PREPROC_T1:PREPROC_N4
+Sep-30 16:21:09.254 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_high_memory` matches labels `process_medium,process_high_memory` for process with name PREPROC_T1:PREPROC_N4
+Sep-30 16:21:09.255 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:PREPROC_N4` matches process PREPROC_T1:PREPROC_N4
+Sep-30 16:21:09.260 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Sep-30 16:21:09.261 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Sep-30 16:21:09.277 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_single` matches labels `process_single,process_high_memory` for process with name PREPROC_T1:IMAGE_RESAMPLE
+Sep-30 16:21:09.278 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_high_memory` matches labels `process_single,process_high_memory` for process with name PREPROC_T1:IMAGE_RESAMPLE
+Sep-30 16:21:09.279 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:IMAGE_RESAMPLE` matches process PREPROC_T1:IMAGE_RESAMPLE
+Sep-30 16:21:09.281 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Sep-30 16:21:09.281 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Sep-30 16:21:09.294 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_medium` matches labels `process_medium` for process with name PREPROC_T1:BETCROP_SYNTHBET
+Sep-30 16:21:09.295 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:BETCROP_SYNTHBET` matches process PREPROC_T1:BETCROP_SYNTHBET
+Sep-30 16:21:09.298 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Sep-30 16:21:09.298 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Sep-30 16:21:09.341 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_high_memory` matches labels `process_high_memory` for process with name SEGMENTATION_SYNTHSEG
+Sep-30 16:21:09.343 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:SEGMENTATION_SYNTHSEG` matches process SEGMENTATION_SYNTHSEG
+Sep-30 16:21:09.349 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Sep-30 16:21:09.349 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Sep-30 16:21:09.361 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_single` matches labels `process_single,process_high_memory` for process with name IMAGE_RESAMPLE
+Sep-30 16:21:09.362 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_high_memory` matches labels `process_single,process_high_memory` for process with name IMAGE_RESAMPLE
+Sep-30 16:21:09.363 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:IMAGE_RESAMPLE` matches process IMAGE_RESAMPLE
+Sep-30 16:21:09.365 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Sep-30 16:21:09.365 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Sep-30 16:21:09.374 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_single` matches labels `process_single` for process with name UTILS_EXTRACTB0
+Sep-30 16:21:09.375 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:UTILS_EXTRACTB0` matches process UTILS_EXTRACTB0
+Sep-30 16:21:09.376 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Sep-30 16:21:09.376 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Sep-30 16:21:09.384 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_medium` matches labels `process_medium` for process with name BETCROP_SYNTHBET
+Sep-30 16:21:09.385 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:BETCROP_SYNTHBET` matches process BETCROP_SYNTHBET
+Sep-30 16:21:09.387 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Sep-30 16:21:09.387 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Sep-30 16:21:09.399 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_high` matches labels `process_high` for process with name REGISTRATION_ANTS
+Sep-30 16:21:09.400 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:REGISTRATION_ANTS` matches process REGISTRATION_ANTS
+Sep-30 16:21:09.403 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Sep-30 16:21:09.403 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Sep-30 16:21:09.417 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_low` matches labels `process_low` for process with name REGISTRATION_ANTSAPPLYTRANSFORMS_mask
+Sep-30 16:21:09.418 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:REGISTRATION_ANTSAPPLYTRANSFORMS*` matches process REGISTRATION_ANTSAPPLYTRANSFORMS_mask
+Sep-30 16:21:09.420 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Sep-30 16:21:09.420 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Sep-30 16:21:09.429 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_low` matches labels `process_low` for process with name REGISTRATION_ANTSAPPLYTRANSFORMS_wm
+Sep-30 16:21:09.430 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:REGISTRATION_ANTSAPPLYTRANSFORMS*` matches process REGISTRATION_ANTSAPPLYTRANSFORMS_wm
+Sep-30 16:21:09.432 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Sep-30 16:21:09.432 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Sep-30 16:21:09.447 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_medium` matches labels `process_medium` for process with name RECONST_FREEWATER
+Sep-30 16:21:09.448 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:RECONST_FREEWATER` matches process RECONST_FREEWATER
+Sep-30 16:21:09.450 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Sep-30 16:21:09.450 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Sep-30 16:21:09.473 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_low` matches labels `process_low` for process with name RECONST_DTIMETRICS
+Sep-30 16:21:09.473 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:RECONST_DTIMETRICS` matches process RECONST_DTIMETRICS
+Sep-30 16:21:09.478 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Sep-30 16:21:09.478 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Sep-30 16:21:09.498 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_low` matches labels `process_low` for process with name RECONST_FRF
+Sep-30 16:21:09.499 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:RECONST_FRF` matches process RECONST_FRF
+Sep-30 16:21:09.503 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Sep-30 16:21:09.503 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Sep-30 16:21:09.526 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_high` matches labels `process_high` for process with name RECONST_FODF
+Sep-30 16:21:09.527 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:RECONST_FODF` matches process RECONST_FODF
+Sep-30 16:21:09.530 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Sep-30 16:21:09.530 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Sep-30 16:21:09.537 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_single` matches labels `process_single` for process with name ML_BUNDLEPARC
+Sep-30 16:21:09.538 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:ML_BUNDLEPARC` matches process ML_BUNDLEPARC
+Sep-30 16:21:09.540 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Sep-30 16:21:09.540 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Sep-30 16:21:09.551 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_single` matches labels `process_single` for process with name STATS_METRICSINROI
+Sep-30 16:21:09.552 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withName:STATS_METRICSINROI` matches process STATS_METRICSINROI
+Sep-30 16:21:09.553 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Sep-30 16:21:09.553 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Sep-30 16:21:09.559 [main] DEBUG nextflow.script.ProcessConfig - Config settings `withLabel:process_single` matches labels `process_single` for process with name STATS_VOLUME
+Sep-30 16:21:09.561 [main] DEBUG nextflow.executor.ExecutorFactory - << taskConfig executor: null
+Sep-30 16:21:09.561 [main] DEBUG nextflow.executor.ExecutorFactory - >> processorType: 'local'
+Sep-30 16:21:09.563 [main] DEBUG nextflow.Session - Config process names validation disabled as requested
+Sep-30 16:21:09.565 [main] DEBUG nextflow.Session - Igniting dataflow network (40)
+Sep-30 16:21:09.566 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > IO_BIDS:IO_READBIDS
+Sep-30 16:21:09.566 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > PREPROC_T1:PREPROC_N4
+Sep-30 16:21:09.566 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > PREPROC_T1:IMAGE_RESAMPLE
+Sep-30 16:21:09.567 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > PREPROC_T1:BETCROP_SYNTHBET
+Sep-30 16:21:09.579 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > SEGMENTATION_SYNTHSEG
+Sep-30 16:21:09.580 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > IMAGE_RESAMPLE
+Sep-30 16:21:09.580 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > UTILS_EXTRACTB0
+Sep-30 16:21:09.580 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > BETCROP_SYNTHBET
+Sep-30 16:21:09.581 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > REGISTRATION_ANTS
+Sep-30 16:21:09.581 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > REGISTRATION_ANTSAPPLYTRANSFORMS_mask
+Sep-30 16:21:09.581 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > REGISTRATION_ANTSAPPLYTRANSFORMS_wm
+Sep-30 16:21:09.582 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > RECONST_FREEWATER
+Sep-30 16:21:09.582 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > RECONST_DTIMETRICS
+Sep-30 16:21:09.582 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > RECONST_FRF
+Sep-30 16:21:09.583 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > RECONST_FODF
+Sep-30 16:21:09.584 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > ML_BUNDLEPARC
+Sep-30 16:21:09.584 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > STATS_METRICSINROI
+Sep-30 16:21:09.584 [main] DEBUG nextflow.processor.TaskProcessor - Starting process > STATS_VOLUME
+Sep-30 16:21:09.585 [main] DEBUG nextflow.script.ScriptRunner - Parsed script files:
+  Script_63b9dbc3649c38a2: /workspaces/nf-neuro-fitbir/./modules/nf-neuro/segmentation/synthseg/main.nf
+  Script_d8c9ca3e118c8f56: /workspaces/nf-neuro-fitbir/./modules/nf-neuro/registration/antsapplytransforms/main.nf
+  Script_2df3063afcf5b530: /workspaces/nf-neuro-fitbir/./modules/nf-neuro/utils/extractb0/main.nf
+  Script_477451b44fefee46: /workspaces/nf-neuro-fitbir/./subworkflows/nf-neuro/io_bids/main.nf
+  Script_64d732ac746a3ae5: /workspaces/nf-neuro-fitbir/./subworkflows/nf-neuro/preproc_t1/../../../modules/nf-neuro/preproc/n4/main.nf
+  Script_37e6f0baa7c7abca: /workspaces/nf-neuro-fitbir/./modules/local/stats/volume/main.nf
+  Script_27606586420d23e2: /workspaces/nf-neuro-fitbir/./subworkflows/nf-neuro/preproc_t1/../../../modules/nf-neuro/image/resample/main.nf
+  Script_455dc2f7c946df54: /workspaces/nf-neuro-fitbir/./subworkflows/nf-neuro/preproc_t1/../../../modules/nf-neuro/denoising/nlmeans/main.nf
+  Script_ab1e75a7ba90f964: /workspaces/nf-neuro-fitbir/./subworkflows/nf-neuro/io_bids/../../../modules/nf-neuro/io/readbids/main.nf
+  Script_cd9b6498b46eb012: /workspaces/nf-neuro-fitbir/./modules/nf-neuro/reconst/freewater/main.nf
+  Script_8d73edf138d92a95: /workspaces/nf-neuro-fitbir/./subworkflows/nf-neuro/preproc_t1/main.nf
+  Script_3a307ab7730f8b36: /workspaces/nf-neuro-fitbir/./modules/nf-neuro/reconst/dtimetrics/main.nf
+  Script_884eed49b4d0380c: /workspaces/nf-neuro-fitbir/main.nf
+  Script_cad20a637cdd5f22: /workspaces/nf-neuro-fitbir/./subworkflows/nf-neuro/preproc_t1/../../../modules/nf-neuro/betcrop/antsbet/main.nf
+  Script_a99ff76c863126f6: /workspaces/nf-neuro-fitbir/./modules/nf-neuro/betcrop/synthbet/main.nf
+  Script_ed001f23f0ab3732: /workspaces/nf-neuro-fitbir/./modules/local/ml/bundleparc/main.nf
+  Script_a25ed1e60ea2b10e: /workspaces/nf-neuro-fitbir/./modules/nf-neuro/stats/metricsinroi/main.nf
+  Script_ab08d948a9038410: /workspaces/nf-neuro-fitbir/./modules/nf-neuro/reconst/fodf/main.nf
+  Script_005e787894fec0fd: /workspaces/nf-neuro-fitbir/./modules/nf-neuro/reconst/frf/main.nf
+  Script_3c9bdbc563748e76: /workspaces/nf-neuro-fitbir/./modules/nf-neuro/registration/ants/main.nf
+  Script_ba46ce49d4dac46a: /workspaces/nf-neuro-fitbir/./subworkflows/nf-neuro/preproc_t1/../../../modules/nf-neuro/image/cropvolume/main.nf
+Sep-30 16:21:09.585 [main] DEBUG nextflow.script.ScriptRunner - > Awaiting termination 
+Sep-30 16:21:09.585 [main] DEBUG nextflow.Session - Session await
+Sep-30 16:21:09.708 [Actor Thread 19] INFO  nextflow.processor.TaskProcessor - [38/255d30] Cached process > IO_BIDS:IO_READBIDS (1)
+Sep-30 16:21:09.760 [Actor Thread 19] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'PublishDir' minSize=10; maxSize=60; workQueue=LinkedBlockingQueue[10000]; allowCoreThreadTimeout=false
+Sep-30 16:21:09.803 [Actor Thread 18] INFO  nextflow.processor.TaskProcessor - [e6/67e76d] Cached process > IMAGE_RESAMPLE (sub-TBIHU286ALX_ses-160108)
+Sep-30 16:21:09.803 [Actor Thread 10] INFO  nextflow.processor.TaskProcessor - [0e/d2f5a1] Cached process > PREPROC_T1:PREPROC_N4 (sub-TBIRP848DFG_ses-170122)
+Sep-30 16:21:09.803 [Actor Thread 16] INFO  nextflow.processor.TaskProcessor - [ef/2b71ec] Cached process > PREPROC_T1:PREPROC_N4 (sub-TBIHU286ALX_ses-160108)
+Sep-30 16:21:09.803 [Actor Thread 15] INFO  nextflow.processor.TaskProcessor - [6e/7e7c4a] Cached process > IMAGE_RESAMPLE (sub-TBIRP848DFG_ses-170122)
+Sep-30 16:21:09.832 [Actor Thread 10] INFO  nextflow.processor.TaskProcessor - [ed/3fc27c] Cached process > PREPROC_T1:IMAGE_RESAMPLE (sub-TBIHU286ALX_ses-160108)
+Sep-30 16:21:09.832 [Actor Thread 14] INFO  nextflow.processor.TaskProcessor - [71/d2f7c3] Cached process > UTILS_EXTRACTB0 (sub-TBIHU286ALX_ses-160108)
+Sep-30 16:21:09.832 [Actor Thread 19] INFO  nextflow.processor.TaskProcessor - [51/513a67] Cached process > PREPROC_T1:IMAGE_RESAMPLE (sub-TBIRP848DFG_ses-170122)
+Sep-30 16:21:09.832 [Actor Thread 17] INFO  nextflow.processor.TaskProcessor - [b3/3e5918] Cached process > UTILS_EXTRACTB0 (sub-TBIRP848DFG_ses-170122)
+Sep-30 16:21:10.545 [Actor Thread 16] INFO  nextflow.processor.TaskProcessor - [fd/2ba723] Cached process > PREPROC_T1:BETCROP_SYNTHBET (sub-TBIHU286ALX_ses-160108)
+Sep-30 16:21:10.545 [Actor Thread 15] INFO  nextflow.processor.TaskProcessor - [f0/e2e279] Cached process > BETCROP_SYNTHBET (sub-TBIRP848DFG_ses-170122)
+Sep-30 16:21:10.545 [Actor Thread 17] INFO  nextflow.processor.TaskProcessor - [cb/b35f76] Cached process > BETCROP_SYNTHBET (sub-TBIHU286ALX_ses-160108)
+Sep-30 16:21:10.547 [Actor Thread 14] INFO  nextflow.processor.TaskProcessor - [ec/3e4ace] Cached process > PREPROC_T1:BETCROP_SYNTHBET (sub-TBIRP848DFG_ses-170122)
+Sep-30 16:21:11.563 [Actor Thread 11] INFO  nextflow.processor.TaskProcessor - [a9/1f8464] Cached process > REGISTRATION_ANTS (sub-TBIHU286ALX_ses-160108)
+Sep-30 16:21:11.569 [Actor Thread 20] INFO  nextflow.processor.TaskProcessor - [b2/a8a39b] Cached process > REGISTRATION_ANTS (sub-TBIRP848DFG_ses-170122)
+Sep-30 16:21:11.576 [Actor Thread 12] INFO  nextflow.processor.TaskProcessor - [a0/0a2304] Cached process > SEGMENTATION_SYNTHSEG (sub-TBIHU286ALX_ses-160108)
+Sep-30 16:21:11.580 [Actor Thread 18] INFO  nextflow.processor.TaskProcessor - [b1/0fc31f] Cached process > SEGMENTATION_SYNTHSEG (sub-TBIRP848DFG_ses-170122)
+Sep-30 16:21:11.640 [Actor Thread 12] DEBUG nextflow.processor.TaskProcessor - Process SEGMENTATION_SYNTHSEG > Skipping output binding because one or more optional files are missing: fileoutparam<7:1>
+Sep-30 16:21:11.640 [Actor Thread 12] DEBUG nextflow.processor.TaskProcessor - Process SEGMENTATION_SYNTHSEG > Skipping output binding because one or more optional files are missing: fileoutparam<8:1>
+Sep-30 16:21:11.640 [Actor Thread 11] DEBUG nextflow.processor.TaskProcessor - Process REGISTRATION_ANTS > Skipping output binding because one or more optional files are missing: fileoutparam<5:1>
+Sep-30 16:21:11.641 [Actor Thread 12] DEBUG nextflow.processor.TaskProcessor - Process SEGMENTATION_SYNTHSEG > Skipping output binding because one or more optional files are missing: fileoutparam<9:1>
+Sep-30 16:21:11.642 [Actor Thread 12] DEBUG nextflow.processor.TaskProcessor - Process SEGMENTATION_SYNTHSEG > Skipping output binding because one or more optional files are missing: fileoutparam<10:1>
+Sep-30 16:21:11.643 [Actor Thread 20] DEBUG nextflow.processor.TaskProcessor - Process REGISTRATION_ANTS > Skipping output binding because one or more optional files are missing: fileoutparam<5:1>
+Sep-30 16:21:11.645 [Actor Thread 18] DEBUG nextflow.processor.TaskProcessor - Process SEGMENTATION_SYNTHSEG > Skipping output binding because one or more optional files are missing: fileoutparam<7:1>
+Sep-30 16:21:11.646 [Actor Thread 18] DEBUG nextflow.processor.TaskProcessor - Process SEGMENTATION_SYNTHSEG > Skipping output binding because one or more optional files are missing: fileoutparam<8:1>
+Sep-30 16:21:11.648 [Actor Thread 18] DEBUG nextflow.processor.TaskProcessor - Process SEGMENTATION_SYNTHSEG > Skipping output binding because one or more optional files are missing: fileoutparam<9:1>
+Sep-30 16:21:11.649 [Actor Thread 18] DEBUG nextflow.processor.TaskProcessor - Process SEGMENTATION_SYNTHSEG > Skipping output binding because one or more optional files are missing: fileoutparam<10:1>
+Sep-30 16:22:18.040 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Sep-30 16:22:18.042 [Task submitter] INFO  nextflow.Session - [25/9bdd69] Submitted process > RECONST_FREEWATER (sub-TBIRP848DFG_ses-170122)
+Sep-30 16:22:18.052 [Actor Thread 17] INFO  nextflow.processor.TaskProcessor - [35/3db1be] Cached process > REGISTRATION_ANTSAPPLYTRANSFORMS_wm (sub-TBIHU286ALX_ses-160108)
+Sep-30 16:22:18.052 [Actor Thread 10] INFO  nextflow.processor.TaskProcessor - [50/0c6523] Cached process > REGISTRATION_ANTSAPPLYTRANSFORMS_wm (sub-TBIRP848DFG_ses-170122)
+Sep-30 16:22:18.053 [Actor Thread 16] INFO  nextflow.processor.TaskProcessor - [db/5aac00] Cached process > REGISTRATION_ANTSAPPLYTRANSFORMS_mask (sub-TBIRP848DFG_ses-170122)
+Sep-30 16:22:18.053 [Actor Thread 15] INFO  nextflow.processor.TaskProcessor - [b8/b9e16e] Cached process > REGISTRATION_ANTSAPPLYTRANSFORMS_mask (sub-TBIHU286ALX_ses-160108)
+Sep-30 16:22:18.916 [Actor Thread 16] DEBUG nextflow.processor.TaskProcessor - Process REGISTRATION_ANTSAPPLYTRANSFORMS_mask > Skipping output binding because one or more optional files are missing: fileoutparam<1:1>
+Sep-30 16:22:18.916 [Actor Thread 17] DEBUG nextflow.processor.TaskProcessor - Process REGISTRATION_ANTSAPPLYTRANSFORMS_wm > Skipping output binding because one or more optional files are missing: fileoutparam<1:1>
+Sep-30 16:22:18.917 [Actor Thread 15] DEBUG nextflow.processor.TaskProcessor - Process REGISTRATION_ANTSAPPLYTRANSFORMS_mask > Skipping output binding because one or more optional files are missing: fileoutparam<1:1>
+Sep-30 16:22:18.917 [Actor Thread 10] DEBUG nextflow.processor.TaskProcessor - Process REGISTRATION_ANTSAPPLYTRANSFORMS_wm > Skipping output binding because one or more optional files are missing: fileoutparam<1:1>
+Sep-30 16:22:18.993 [Task submitter] DEBUG n.executor.local.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Sep-30 16:22:18.994 [Task submitter] INFO  nextflow.Session - [11/f33fd8] Submitted process > RECONST_FREEWATER (sub-TBIHU286ALX_ses-160108)
+Sep-30 16:22:21.359 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 18; name: RECONST_FREEWATER (sub-TBIRP848DFG_ses-170122); status: COMPLETED; exit: 127; error: -; workDir: /fs5/p_masi/fitbir/example_datasets/example_nextflow/work/25/9bdd6960c9b62eddd4e4bab7ccd6ba]
+Sep-30 16:22:21.360 [Task monitor] DEBUG nextflow.util.ThreadPoolBuilder - Creating thread pool 'TaskFinalizer' minSize=10; maxSize=60; workQueue=LinkedBlockingQueue[10000]; allowCoreThreadTimeout=false
+Sep-30 16:22:21.459 [TaskFinalizer-1] DEBUG nextflow.processor.TaskProcessor - Handling unexpected condition for
+  task: name=RECONST_FREEWATER (sub-TBIRP848DFG_ses-170122); work-dir=/fs5/p_masi/fitbir/example_datasets/example_nextflow/work/25/9bdd6960c9b62eddd4e4bab7ccd6ba
+  error [nextflow.exception.ProcessFailedException]: Process `RECONST_FREEWATER (sub-TBIRP848DFG_ses-170122)` terminated with an error exit status (127)
+Sep-30 16:22:29.410 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 15; name: RECONST_FREEWATER (sub-TBIHU286ALX_ses-160108); status: COMPLETED; exit: 127; error: -; workDir: /fs5/p_masi/fitbir/example_datasets/example_nextflow/work/11/f33fd83ca4a6cd26111903b0d5a3f5]
+Sep-30 16:22:29.416 [TaskFinalizer-1] ERROR nextflow.processor.TaskProcessor - Error executing process > 'RECONST_FREEWATER (sub-TBIRP848DFG_ses-170122)'
+
+Caused by:
+  Process `RECONST_FREEWATER (sub-TBIRP848DFG_ses-170122)` terminated with an error exit status (127)
+
+
+Command executed:
+
+  echo $PATH
+  echo "Here is what is in the folder:"
+  ls /workspaces/nf-neuro-fitbir/modules/nf-neuro/reconst/freewater/resources/usr/bin
+  echo "That was the content of the folder."
+  my_scil_freewater_maps.py sub-TBIRP848DFG_ses-170122_resampled.nii.gz sub-TBIRP848DFG_ses-170122_dwi.bval sub-TBIRP848DFG_ses-170122_dwi.bvec               --processes 4 --b_thr 51         --mask sub-TBIRP848DFG_ses-170122__brain_mask.nii.gz --save_kernels kernels/ 
+  
+  if [ -z "" ]; then
+      mv results/DWI_corrected.nii.gz sub-TBIRP848DFG_ses-170122__dwi_fw_corrected.nii.gz
+      mv results/fit_dir.nii.gz sub-TBIRP848DFG_ses-170122__dir.nii.gz
+      mv results/fit_FiberVolume.nii.gz sub-TBIRP848DFG_ses-170122__FiberVolume.nii.gz
+      mv results/fit_FW.nii.gz sub-TBIRP848DFG_ses-170122__FW.nii.gz
+      mv results/fit_NRMSE.nii.gz sub-TBIRP848DFG_ses-170122__NRMSE.nii.gz
+  
+      rm -rf results
+  fi
+  
+  cat <<-END_VERSIONS > versions.yml
+  "RECONST_FREEWATER":
+      scilpy: $(uv pip -q -n list | grep scilpy | tr -s ' ' | cut -d' ' -f2)
+  END_VERSIONS
+
+Command exit status:
+  127
+
+Command output:
+  /opt/venvs/scilpy/bin:/opt/bin/:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/workspaces/nf-neuro-fitbir/modules/nf-neuro/reconst/freewater/resources/usr/bin
+  Here is what is in the folder:
+  That was the content of the folder.
+
+Command error:
+  /opt/venvs/scilpy/bin:/opt/bin/:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/workspaces/nf-neuro-fitbir/modules/nf-neuro/reconst/freewater/resources/usr/bin
+  Here is what is in the folder:
+  That was the content of the folder.
+  .command.sh: line 6: my_scil_freewater_maps.py: command not found
+
+Work dir:
+  /fs5/p_masi/fitbir/example_datasets/example_nextflow/work/25/9bdd6960c9b62eddd4e4bab7ccd6ba
+
+Container:
+  docker.io/scilus/scilpy:2.2.0_cpu
+
+Tip: view the complete command output by changing to the process work dir and entering the command `cat .command.out`
+Sep-30 16:22:29.420 [TaskFinalizer-2] DEBUG nextflow.processor.TaskProcessor - Handling unexpected condition for
+  task: name=RECONST_FREEWATER (sub-TBIHU286ALX_ses-160108); work-dir=/fs5/p_masi/fitbir/example_datasets/example_nextflow/work/11/f33fd83ca4a6cd26111903b0d5a3f5
+  error [nextflow.exception.ProcessFailedException]: Process `RECONST_FREEWATER (sub-TBIHU286ALX_ses-160108)` terminated with an error exit status (127)
+Sep-30 16:22:29.424 [TaskFinalizer-1] INFO  nextflow.Session - Execution cancelled -- Finishing pending tasks before exit
+Sep-30 16:22:29.426 [main] DEBUG nextflow.Session - Session await > all processes finished
+Sep-30 16:22:29.431 [Task monitor] DEBUG n.processor.TaskPollingMonitor - <<< barrier arrives (monitor: local) - terminating tasks monitor poll loop
+Sep-30 16:22:29.431 [main] DEBUG nextflow.Session - Session await > all barriers passed
+Sep-30 16:22:29.435 [main] DEBUG nextflow.util.ThreadPoolManager - Thread pool 'TaskFinalizer' shutdown completed (hard=false)
+Sep-30 16:22:30.126 [main] DEBUG nextflow.util.ThreadPoolManager - Thread pool 'PublishDir' shutdown completed (hard=false)
+Sep-30 16:22:30.136 [main] DEBUG n.trace.WorkflowStatsObserver - Workflow completed > WorkflowStats[succeededCount=0; failedCount=2; ignoredCount=0; cachedCount=21; pendingCount=0; submittedCount=0; runningCount=0; retriesCount=0; abortedCount=0; succeedDuration=0ms; failedDuration=51.3s; cachedDuration=5h 51m 48s;loadCpus=0; loadMemory=0; peakRunning=2; peakCpus=8; peakMemory=16 GB; ]
+Sep-30 16:22:30.136 [main] DEBUG nextflow.trace.TraceFileObserver - Workflow completed -- saving trace file
+Sep-30 16:22:30.139 [main] DEBUG nextflow.trace.ReportObserver - Workflow completed -- rendering execution report
+Sep-30 16:22:30.723 [main] DEBUG nextflow.trace.TimelineObserver - Workflow completed -- rendering execution timeline
+Sep-30 16:22:31.050 [main] DEBUG nextflow.cache.CacheDB - Closing CacheDB done
+Sep-30 16:22:31.103 [main] DEBUG nextflow.util.ThreadPoolManager - Thread pool 'FileTransfer' shutdown completed (hard=false)
+Sep-30 16:22:31.103 [main] DEBUG nextflow.script.ScriptRunner - > Execution complete -- Goodbye
