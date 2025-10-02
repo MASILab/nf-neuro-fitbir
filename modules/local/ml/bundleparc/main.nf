@@ -1,6 +1,7 @@
 process ML_BUNDLEPARC {
     tag "$meta.id"
     label 'process_single'
+    label (params.use_gpu ? 'gpu' : 'cpu')
 
     container "scilus/scilpy:2.2.0_gpu"
 
