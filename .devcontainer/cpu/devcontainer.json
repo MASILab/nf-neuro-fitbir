@@ -8,14 +8,18 @@
             "installDockerComposeSwitch": false
         }
     },
+    "runArgs": [
+        "--privileged",
+        "--mount", "type=volume,source=root-writable,target=/root",
+        "--mount", "type=bind,source=/fs5/p_masi/fitbir,target=/fs5/p_masi/fitbir",
+        "--mount", "type=bind,source=/home-local/saundam1/singularity,target=/home-local/saundam1/singularity",
+        "--mount", "type=bind,source=/home-local/saundam1/freesurfer/license.txt,target=/home-local/saundam1/freesurfer/license.txt"
+    ],
     "postCreateCommand": {
         "identify": "if [ -z \"$CODESPACES\" ]; then echo \"Devcontainers Development\"; else echo \"Codespaces Development\";  fi",
         "trust": "git config --global --add safe.directory /workspaces"
     },
     "mounts": [
-        "source=/fs5/p_masi/fitbir,target=/fs5/p_masi/fitbir,type=bind",
-        "source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind",
-        "source=/home-local/saundam1/freesurfer/license.txt,target=/home-local/saundam1/freesurfer/license.txt,type=bind",
         {
             "target": "/tmp",
             "type": "volume"

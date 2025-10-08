@@ -45,8 +45,7 @@ process SEGMENTATION_SYNTHSEG {
     export OMP_NUM_THREADS=1
     export OPENBLAS_NUM_THREADS=1
 
-    cp ${fs_license} \$FREESURFER_HOME/license.txt
-    cat \$FREESURFER_HOME/license.txt
+    export FS_LICENSE=${fs_license}
 
     mri_synthseg --i $image --o seg.nii.gz --threads $task.cpus --post posteriors.nii.gz $gpu $robust $fast $ct $output_resample $output_volume $output_qc_score $crop
 

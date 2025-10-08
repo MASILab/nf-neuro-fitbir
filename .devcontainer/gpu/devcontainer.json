@@ -18,7 +18,7 @@
     "mounts": [
         "source=/fs5/p_masi/fitbir,target=/fs5/p_masi/fitbir,type=bind",
         "source=/home/local/VANDERBILT/saundam1/Documents/SCIL/,target=/home/local/VANDERBILT/saundam1/Documents/SCIL/,type=bind",
-        "source=/home-local/saundam1/freesurfer,target=/home-local/saundam1/freesurfer,type=bind,consistency=cached",
+        "source=/home-local/saundam1/freesurfer,target=/home-local/saundam1/freesurfer,type=bind",
         "source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind",
         {
             "target": "/tmp",
