@@ -3,7 +3,7 @@ process ML_BUNDLEPARC {
     label 'process_single'
     label (params.use_gpu ? 'gpu' : 'cpu')
 
-    container "scilus/scilpy:2.2.0_gpu"
+    container (params.use_gpu ? 'scilus/scilpy:2.2.0_gpu' : 'scilus/scilpy:2.2.0_cpu')
 
     input:
     tuple val(meta), path(fodf)

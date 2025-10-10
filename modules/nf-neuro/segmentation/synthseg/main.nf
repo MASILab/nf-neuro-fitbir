@@ -1,7 +1,7 @@
 process SEGMENTATION_SYNTHSEG {
     cache 'lenient'
     tag "$meta.id"
-    label 'process_high'
+    label 'process_medium'
     label (params.use_gpu ? 'gpu' : 'cpu')
     
     container "freesurfer/freesurfer:7.4.1"
@@ -132,8 +132,6 @@ process SEGMENTATION_SYNTHSEG {
     mri_convert -i ${prefix}__mask_wm.nii.gz --out_data_type uchar -o ${prefix}__mask_wm.nii.gz
     mri_convert -i ${prefix}__mask_gm.nii.gz --out_data_type uchar -o ${prefix}__mask_gm.nii.gz
     mri_convert -i ${prefix}__mask_csf.nii.gz --out_data_type uchar -o ${prefix}__mask_csf.nii.gz
-
-    rm \$FREESURFER_HOME/license.txt
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
