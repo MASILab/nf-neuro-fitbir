@@ -1,7 +1,7 @@
 process SEGMENTATION_SYNTHSEG {
     cache 'lenient'
     tag "$meta.id"
-    label 'process_medium'
+    label 'process_very_high_memory'
     label (params.use_gpu ? 'gpu' : 'cpu')
     
     container "freesurfer/freesurfer:7.4.1"
@@ -13,9 +13,10 @@ process SEGMENTATION_SYNTHSEG {
     tuple val(meta), path("*__mask_wm.nii.gz")                , emit: wm_mask
     tuple val(meta), path("*__mask_gm.nii.gz")                , emit: gm_mask
     tuple val(meta), path("*__mask_csf.nii.gz")               , emit: csf_mask
-    tuple val(meta), path("*__map_wm.nii.gz")                 , emit: wm_map
-    tuple val(meta), path("*__map_gm.nii.gz")                 , emit: gm_map
-    tuple val(meta), path("*__map_csf.nii.gz")                , emit: csf_map
+    tuple val(meta), path("*__mask_brain.nii.gz")             , emit: brain_mask
+    tuple val(meta), path("*__map_wm.nii.gz")                 , emit: wm_map, optional: true
+    tuple val(meta), path("*__map_gm.nii.gz")                 , emit: gm_map, optional: true
+    tuple val(meta), path("*__map_csf.nii.gz")                , emit: csf_map, optional: true
     tuple val(meta), path("*__seg.nii.gz")                    , emit: seg, optional: true
     tuple val(meta), path("*__aparc_aseg.nii.gz")             , emit: aparc_aseg, optional: true
     tuple val(meta), path("*__resampled_image.nii.gz")        , emit: resample, optional: true
@@ -39,6 +40,7 @@ process SEGMENTATION_SYNTHSEG {
     def output_volume = task.ext.output_volume ?  "--vol ${prefix}__volume.csv" : ""
     def output_qc_score = task.ext.output_qc_score ?  "--qc ${prefix}__qc_score.csv" : ""
     def crop = task.ext.crop ? "--crop " + task.ext.crop: ""
+    def posteriors = task.ext.posteriors ? "--posteriors posteriors.nii.gz" : ""
 
     """
     export ITK_GLOBAL_DEFAULT_NUMBER_OF_THREADS=1
@@ -47,7 +49,7 @@ process SEGMENTATION_SYNTHSEG {
 
     export FS_LICENSE=${fs_license}
 
-    mri_synthseg --i $image --o seg.nii.gz --threads $task.cpus --post posteriors.nii.gz $gpu $robust $fast $ct $output_resample $output_volume $output_qc_score $crop
+    mri_synthseg --i $image --o seg.nii.gz --threads $task.cpus $posteriors $gpu $robust $fast $ct $output_resample $output_volume $output_qc_score $crop
 
     if [[ -n "$gm_parc" ]];
     then
@@ -88,50 +90,60 @@ process SEGMENTATION_SYNTHSEG {
             --o ${prefix}__mask_csf.nii.gz
     fi
 
-    # Posteriors 4D slices associated with wm, gm and csf masks.
-    wm_map_indices=(1 5 7 9 10 13 18 19 23 25 27 28 32)
-    gm_map_indices=(2 6 8 14 15 17 20 24 26 29 30 31)
-    csf_map_indices=(3 4 11 12 16 21 22)
+    if [[ -f "posteriors.nii.gz" ]];
+    then
 
-    # Generating concat command
-    wm_map_command="mri_concat --sum --o ${prefix}__map_wm.nii.gz"
-    gm_map_command="mri_concat --sum --o ${prefix}__map_gm.nii.gz"
-    csf_map_command="mri_concat --sum --o ${prefix}__map_csf.nii.gz"
+        # Posteriors 4D slices associated with wm, gm and csf masks.
+        wm_map_indices=(1 5 7 9 10 13 18 19 23 25 27 28 32)
+        gm_map_indices=(2 6 8 14 15 17 20 24 26 29 30 31)
+        csf_map_indices=(3 4 11 12 16 21 22)
 
-    # Extracting wm slices for wm map
-    for i in "\${wm_map_indices[@]}"; do
-        mri_convert -nth "\$i" posteriors.nii.gz wm_map_slice_\${i}.nii.gz
-        wm_map_command="\$wm_map_command --i wm_map_slice_\${i}.nii.gz"
-    done
+        # Generating concat command
+        wm_map_command="mri_concat --sum --o ${prefix}__map_wm.nii.gz"
+        gm_map_command="mri_concat --sum --o ${prefix}__map_gm.nii.gz"
+        csf_map_command="mri_concat --sum --o ${prefix}__map_csf.nii.gz"
 
-    # Extracting gm slices for gm map
-    for i in "\${gm_map_indices[@]}"; do
-        mri_convert -nth "\$i" posteriors.nii.gz gm_map_slice_\${i}.nii.gz
-        gm_map_command="\$gm_map_command --i gm_map_slice_\${i}.nii.gz"
-    done
+        # Extracting wm slices for wm map
+        for i in "\${wm_map_indices[@]}"; do
+            mri_convert -nth "\$i" posteriors.nii.gz wm_map_slice_\${i}.nii.gz
+            wm_map_command="\$wm_map_command --i wm_map_slice_\${i}.nii.gz"
+        done
 
-    # Extracting csf slices for csf map
-    for i in "\${csf_map_indices[@]}"; do
-        mri_convert -nth "\$i" posteriors.nii.gz csf_map_slice_\${i}.nii.gz
-        csf_map_command="\$csf_map_command --i csf_map_slice_\${i}.nii.gz"
-    done
+        # Extracting gm slices for gm map
+        for i in "\${gm_map_indices[@]}"; do
+            mri_convert -nth "\$i" posteriors.nii.gz gm_map_slice_\${i}.nii.gz
+            gm_map_command="\$gm_map_command --i gm_map_slice_\${i}.nii.gz"
+        done
 
-    eval \${wm_map_command}
-    eval \${gm_map_command}
-    eval \${csf_map_command}
+        # Extracting csf slices for csf map
+        for i in "\${csf_map_indices[@]}"; do
+            mri_convert -nth "\$i" posteriors.nii.gz csf_map_slice_\${i}.nii.gz
+            csf_map_command="\$csf_map_command --i csf_map_slice_\${i}.nii.gz"
+        done
 
-    rm wm_map_slice_*.nii.gz
-    rm gm_map_slice_*.nii.gz
-    rm csf_map_slice_*.nii.gz
+        eval \${wm_map_command}
+        eval \${gm_map_command}
+        eval \${csf_map_command}
+
+        rm wm_map_slice_*.nii.gz
+        rm gm_map_slice_*.nii.gz
+        rm csf_map_slice_*.nii.gz
+
+    fi
 
     if [[ -f "$lesion" ]];
     then
         mri_binarize --i ${prefix}__mask_wm.nii.gz --merge $lesion --min 0.5 --o ${prefix}__mask_wm.nii.gz
     fi
 
+    # Combine wm and gm masks to create brain mask
+    mri_binarize --i ${prefix}__mask_wm.nii.gz --merge ${prefix}__mask_gm.nii.gz --min 0.5 --o ${prefix}__mask_brain.nii.gz
+
     mri_convert -i ${prefix}__mask_wm.nii.gz --out_data_type uchar -o ${prefix}__mask_wm.nii.gz
     mri_convert -i ${prefix}__mask_gm.nii.gz --out_data_type uchar -o ${prefix}__mask_gm.nii.gz
     mri_convert -i ${prefix}__mask_csf.nii.gz --out_data_type uchar -o ${prefix}__mask_csf.nii.gz
+    mri_convert -i ${prefix}__mask_brain.nii.gz --out_data_type uchar -o ${prefix}__mask_brain.nii.gz
+
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":

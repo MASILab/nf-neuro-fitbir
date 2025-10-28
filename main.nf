@@ -13,7 +13,8 @@ include { SEGMENTATION_SYNTHSEG } from './modules/nf-neuro/segmentation/synthseg
 include { REGISTRATION_ANTS } from './modules/nf-neuro/registration/ants/main'
 include { 
     REGISTRATION_ANTSAPPLYTRANSFORMS as REGISTRATION_ANTSAPPLYTRANSFORMS_mask; 
-    REGISTRATION_ANTSAPPLYTRANSFORMS as REGISTRATION_ANTSAPPLYTRANSFORMS_wm 
+    REGISTRATION_ANTSAPPLYTRANSFORMS as REGISTRATION_ANTSAPPLYTRANSFORMS_wm;
+    REGISTRATION_ANTSAPPLYTRANSFORMS as REGISTRATION_ANTSAPPLYTRANSFORMS_seg
 } from './modules/nf-neuro/registration/antsapplytransforms/main'
 include { RECONST_FRF } from './modules/nf-neuro/reconst/frf/main'
 include { STATS_METRICSINROI } from './modules/nf-neuro/stats/metricsinroi/main'
@@ -78,6 +79,7 @@ workflow {
     )
     t1_preproc = PREPROC_T1.out.t1_final
     t1_mask = PREPROC_T1.out.mask_final
+    t1_resample = PREPROC_T1.out.image_resample
 
     // Check we can access the file right away
     def fs_license_path = file(params.freesurfer_license)
@@ -91,7 +93,7 @@ workflow {
     fs_license_ch = Channel.fromPath(params.freesurfer_license)
 
     // Combine T1w input with FS license
-    synthseg_input = t1_preproc
+    synthseg_input = t1_resample
         .combine(fs_license_ch)
         .map { meta, t1, license -> tuple(meta, t1, [], license) }
 
@@ -125,7 +127,7 @@ workflow {
     t1_to_dwi_warp = REGISTRATION_ANTS.out.warp
 
     // Apply transform to mask and synthseg
-    antsapplytransforms_input_mask = t1_mask
+    antsapplytransforms_input_mask = SEGMENTATION_SYNTHSEG.out.brain_mask
         .join(b0_image)
         .join(t1_to_dwi_warp)
         .join(t1_to_dwi_affine)
@@ -138,6 +140,13 @@ workflow {
         .join(t1_to_dwi_affine)
     REGISTRATION_ANTSAPPLYTRANSFORMS_wm(antsapplytransforms_input_wm)
     wm_mask = REGISTRATION_ANTSAPPLYTRANSFORMS_wm.out.warped_image
+
+    antsapplytransforms_input_seg = SEGMENTATION_SYNTHSEG.out.seg
+        .join(b0_image)
+        .join(t1_to_dwi_warp)
+        .join(t1_to_dwi_affine)
+    REGISTRATION_ANTSAPPLYTRANSFORMS_seg(antsapplytransforms_input_seg)
+    seg = REGISTRATION_ANTSAPPLYTRANSFORMS_seg.out.warped_image
 
     // Run FW correction
     fw_input = resampled_dwi_bval_bvec
@@ -153,38 +162,45 @@ workflow {
     fa = RECONST_DTIMETRICS.out.fa
     md = RECONST_DTIMETRICS.out.md
 
-    // Calculate FRF
-    frf_input = RECONST_FREEWATER.out.dwi_fw_corrected
-        .join(bids_dwi.bval_bvec)
-        .join(b0_mask)
-        .join(wm_mask)
-        .map { it + [[], []] }
-    RECONST_FRF(frf_input)
-    ss_frf = RECONST_FRF.out.frf
+    // // Calculate FRF
+    // frf_input = RECONST_FREEWATER.out.dwi_fw_corrected
+    //     .join(bids_dwi.bval_bvec)
+    //     .join(b0_mask)
+    //     .join(wm_mask)
+    //     .map { it + [[], []] }
+    // RECONST_FRF(frf_input)
+    // ss_frf = RECONST_FRF.out.frf
 
-    // Reconstruct FODs
-    fodf_input = RECONST_FREEWATER.out.dwi_fw_corrected
-        .join(bids_dwi.bval_bvec)
-        .join(b0_mask)
-        .join(fa)
-        .join(md)
-        .join(ss_frf)
-        .map { it + [[], []] }
-    RECONST_FODF(fodf_input)
+    // // Reconstruct FODs
+    // fodf_input = RECONST_FREEWATER.out.dwi_fw_corrected
+    //     .join(bids_dwi.bval_bvec)
+    //     .join(b0_mask)
+    //     .join(fa)
+    //     .join(md)
+    //     .join(ss_frf)
+    //     .map { it + [[], []] }
+    // RECONST_FODF(fodf_input)
 
-    // Perform BundleParc
-    ml_bundleparc_input = RECONST_FODF.out.fodf
-    ML_BUNDLEPARC(ml_bundleparc_input)
+    // // Perform BundleParc
+    // ml_bundleparc_input = RECONST_FODF.out.fodf
+    // ML_BUNDLEPARC(ml_bundleparc_input)
 
-    // Now get mean/std of FA and MD in the BundleParc ROIs
-    bundles = ML_BUNDLEPARC.out.bundles
+    // // Now get mean/std of FA and MD in the BundleParc ROIs
+    // bundles = ML_BUNDLEPARC.out.bundles
+    // metrics_input = fa.join(md)
+    //     .map { meta, fa_file, md_file -> tuple(meta, [fa_file, md_file]) }
+    //     .join(bundles)
+    //     .map { it + [[]] }
+
+    // STATS_METRICSINROI(metrics_input)
+
+    // // Calculate volume of each BundleParc ROI
+    // STATS_VOLUME(bundles)
+
+    // Calculate FA in synthseg mask
     metrics_input = fa.join(md)
         .map { meta, fa_file, md_file -> tuple(meta, [fa_file, md_file]) }
-        .join(bundles)
+        .join(t1_to_dwi_mask)
         .map { it + [[]] }
-
     STATS_METRICSINROI(metrics_input)
-
-    // Calculate volume of each BundleParc ROI
-    STATS_VOLUME(bundles)
 }
