@@ -1,7 +1,7 @@
 
 process RECONST_FREEWATER {
     tag "$meta.id"
-    label 'process_high'
+    label 'process_very_high_memory'
 
     container "scilus/scilpy:2.2.0_cpu"
 

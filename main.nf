@@ -129,21 +129,21 @@ workflow {
     // Apply transform to mask and synthseg
     antsapplytransforms_input_mask = SEGMENTATION_SYNTHSEG.out.brain_mask
         .join(b0_image)
-        .join(t1_to_dwi_warp)
+        .map { it + [[]] }
         .join(t1_to_dwi_affine)
     REGISTRATION_ANTSAPPLYTRANSFORMS_mask(antsapplytransforms_input_mask)
     t1_to_dwi_mask = REGISTRATION_ANTSAPPLYTRANSFORMS_mask.out.warped_image
 
     antsapplytransforms_input_wm = SEGMENTATION_SYNTHSEG.out.wm_mask
         .join(b0_image)
-        .join(t1_to_dwi_warp)
+        .map { it + [[]] }
         .join(t1_to_dwi_affine)
     REGISTRATION_ANTSAPPLYTRANSFORMS_wm(antsapplytransforms_input_wm)
     wm_mask = REGISTRATION_ANTSAPPLYTRANSFORMS_wm.out.warped_image
 
     antsapplytransforms_input_seg = SEGMENTATION_SYNTHSEG.out.seg
         .join(b0_image)
-        .join(t1_to_dwi_warp)
+        .map { it + [[]] }
         .join(t1_to_dwi_affine)
     REGISTRATION_ANTSAPPLYTRANSFORMS_seg(antsapplytransforms_input_seg)
     seg = REGISTRATION_ANTSAPPLYTRANSFORMS_seg.out.warped_image

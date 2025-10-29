@@ -1,6 +1,6 @@
 process UTILS_EXTRACTB0 {
     tag "$meta.id"
-    label 'process_low'
+    label 'process_high'
 
     container "scilus/scilpy:2.2.0_cpu"
 
