@@ -5,7 +5,18 @@ set -e
 # Done: until site-57869d
 
 nextflow_dir="/fs5/p_masi/fitbir/nextflow"
-for bids_dir in $nextflow_dir/site-*; do
+nextflow run main.nf --input $nextflow_dir/site-6af6b3 -profile docker -resume
+skip_until="site-6af6b3"
+
+skip_flag=1
+for bids_dir in $(ls -d $nextflow_dir/site-*); do
+    if [[ $skip_flag == 1 ]]; then 
+        echo "Skipping $bids_dir..."
+        if [[ $(basename $bids_dir) == $skip_until ]]; then
+            skip_flag=0
+        fi
+        continue
+    fi
     if [[ " ${skip_list[@]} " =~ " $(basename $bids_dir) " ]]; then
         echo "Skipping $bids_dir..."
         continue
