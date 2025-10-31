@@ -21,6 +21,7 @@ process REGISTRATION_ANTS {
     task.ext.when == null || task.ext.when
 
     script:
+    def initialization_types = ["geometric center": 0, "intensities": 1, "origin": 2]
     def args = task.ext.args ?: ''
     def prefix = task.ext.prefix ?: "${meta.id}"
     def suffix_qc = task.ext.suffix_qc ? "${task.ext.suffix_qc}" : ""
@@ -31,7 +32,7 @@ process REGISTRATION_ANTS {
     def run_qc = task.ext.run_qc ? task.ext.run_qc : false
 
     if ( task.ext.threads ) args += "-n " + task.ext.threads
-    if ( task.ext.initial_transform ) args += " -i " + task.ext.initial_transform
+    if ( task.ext.initial_transform ) args += " -i [$fixedimage,$movingimage,${initialization_types[task.ext.initial_transform]}]"
     if ( task.ext.histogram_bins ) args += " -r " + task.ext.histogram_bins
     if ( task.ext.spline_distance ) args += " -s " + task.ext.spline_distance
     if ( task.ext.gradient_step ) args += " -g " + task.ext.gradient_step
